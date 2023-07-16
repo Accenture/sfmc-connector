@@ -1,0 +1,19 @@
+{
+  "packageDirectories": [
+    {
+      "path": "src/mkt-connector",
+      "package": "mkt-connector",
+      "versionNumber": "0.1.0.NEXT",
+      "default": true,
+      "versionDescription": "",
+      "dependencies": [],
+
+      "versionName": "ver 0.1",
+      "definitionFile": "config/shapeRepresentation.json"
+    }
+  ],
+  "namespace": "",
+  "sfdcLoginUrl": "https://login.salesforce.com",
+  "sourceApiVersion": "58.0",
+  "packageAliases": {}
+}

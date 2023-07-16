@@ -1,0 +1,11 @@
+# always use unix line endings
+* text eol=lf
+# treat ttf files as binaries
+*.ttf binary
+# treat png files as binaries
+*.png binary
+# treat gif files as binaries
+*.gif binary
+# treat asset files as binaries
+*.asset binary
+No newline at end of file

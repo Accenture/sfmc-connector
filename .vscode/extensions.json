@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "salesforce.salesforcedx-vscode",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "financialforce.lana",
+    "stylelint.vscode-stylelint",
+    "htmlhint.vscode-htmlhint"
+  ]
+}

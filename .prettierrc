@@ -1,0 +1,26 @@
+{
+  "plugins": ["prettier-plugin-apex", "@prettier/plugin-xml", "stylelint-prettier"],
+  "trailingComma": "none",
+  "endOfLine": "lf",
+  "apexInsertFinalNewline": false,
+  "overrides": [
+    {
+      "files": "**/lwc/**/*.html",
+      "options": { "parser": "lwc" }
+    },
+    {
+      "files": "*.{cmp,page,component,design}",
+      "options": { "parser": "html" }
+    },
+    {
+      "files": "*.xml",
+      "options": { "embeddedLanguageFormatting": "off" }
+    },
+    {
+      "files": "*.{cls,apex,trigger}",
+      "options": { "useTabs": true }
+    }
+  ],
+  "xmlSelfClosingSpace": false,
+  "bracketSameLine": true
+}

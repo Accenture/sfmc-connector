@@ -1,0 +1,45 @@
+{
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/.sfdx": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": true,
+  "files.eol": "\n",
+  "editor.formatOnSave": true,
+  "[xml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[visualforce]": {
+    "editor.defaultFormatter": "salesforce.salesforcedx-vscode-visualforce"
+  },
+  "apexPMD.enableCache": true,
+  "apexPMD.priorityErrorThreshold": 3,
+  "apexPMD.priorityWarnThreshold": 5,
+  "xml.validation.filters": [
+
+    {
+      "pattern": "**.exsd",
+      "noGrammar": "ignore",
+      "schema": {
+        "enabled": "never"
+      }
+    },
+    {
+      "pattern": "**{.project,.classpath,plugin.xml,feature.xml,category.xml,.target,.product}",
+      "noGrammar": "ignore"
+    },
+    {
+      "pattern": "**.cls-meta.xml",
+      "schema": {
+        "enabled": "never"
+      }
+    }
+  ],
+  "prettier.configPath": ""
+}
