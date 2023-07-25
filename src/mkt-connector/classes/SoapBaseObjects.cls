@@ -3071,23 +3071,26 @@ public with sharing class SoapBaseObjects {
 			);
 			this.RequestID = (RequestIDNode == null) ? null : RequestIDNode.getText();
 			nodesParsed.add(RequestIDNode);
-			this.Results = responseNode.getChildElements();
-			// Dom.XmlNode[] ResultsChildren = responseNode.getChildElements();
-			// soapBaseObjects.APIObject[] ResultsList = new List<soapBaseObjects.APIObject>();
-			// if (ResultsChildren == null || ResultsChildren.size() == 0) {
-			// 	this.Results = null;
-			// } else {
-			// 	for (DOM.XmlNode childNode : ResultsChildren) {
-			// 		if (childNode.GetName() == 'Results') {
-			// 			soapBaseObjects.APIObject Obj = new soapBaseObjects.APIObject(
-			// 				childNode
-			// 			);
-			// 			ResultsList.Add(Obj);
-			// 			nodesParsed.add(childNode);
-			// 		}
-			// 	}
-			// 	this.Results = ResultsList;
-			// }
+			// this.Results = responseNode.getChildElements(); TODO CHECK
+
+			Dom.XmlNode[] ResultsChildren = responseNode.getChildElements();
+
+			if (ResultsChildren == null || ResultsChildren.size() == 0) {
+				this.Results = null;
+			} else {
+				Dom.XmlNode[] ResultsList = new List<Dom.XmlNode>();
+				for (DOM.XmlNode childNode : ResultsChildren) {
+					if (childNode.GetName() == 'Results') {
+						ResultsList.Add(childNode);
+						// soapBaseObjects.APIObject Obj = new soapBaseObjects.APIObject(
+						// 	childNode
+						// );
+						// ResultsList.Add(Obj);
+						// nodesParsed.add(childNode);
+					}
+				}
+				this.Results = ResultsList;
+			}
 		}
 	}
 
@@ -3447,7 +3450,7 @@ public with sharing class SoapBaseObjects {
 	}
 
 	//Extends http://exacttarget.com/wsdl/partnerAPI:FilterPart
-	public class ComplexFilterPart {
+	public class ComplexFilterPart extends FilterPart {
 		public soapBaseObjects.FilterPart LeftOperand;
 		// Restriction enumeration: OR, AND
 		public String LogicalOperator;
@@ -3505,7 +3508,8 @@ public with sharing class SoapBaseObjects {
 				this.AdditionalOperands = AdditionalOperandsObj;
 			}
 		}
-		public void populateXmlNode(Dom.XmlNode outerNode) {
+		public override void populateXmlNode(Dom.XmlNode outerNode) {
+			outerNode.setAttribute('xsi:type', 'ComplexFilterPart');
 			soapBaseObjects.FilterPart LeftOperandObj = this.LeftOperand;
 			Dom.XmlNode LeftOperandNode = outerNode.addChildElement(
 				'LeftOperand',
@@ -3609,7 +3613,7 @@ public with sharing class SoapBaseObjects {
 		}
 	}
 	//Extends http://exacttarget.com/wsdl/partnerAPI:FilterPart
-	public class SimpleFilterPart {
+	public class SimpleFilterPart extends FilterPart {
 		public String Property;
 		// Restriction enumeration: equals, notEquals, greaterThan, lessThan, isNull, isNotNull, greaterThanOrEqual, lessThanOrEqual, between, IN, like, existsInString, existsInStringAsAWord, notExistsInString, beginsWith, endsWith, contains, notContains, isAnniversary, isNotAnniversary, greaterThanAnniversary, lessThanAnniversary
 		public String SimpleOperator;
@@ -3674,7 +3678,8 @@ public with sharing class SoapBaseObjects {
 				this.DateValue = DateValueList;
 			}
 		}
-		public void populateXmlNode(Dom.XmlNode outerNode) {
+		public override void populateXmlNode(Dom.XmlNode outerNode) {
+			outerNode.setAttribute('xsi:type', 'SimpleFilterPart');
 			Dom.XmlNode PropertyNode = outerNode.addChildElement(
 				'Property',
 				s_ns0,
@@ -3709,17 +3714,12 @@ public with sharing class SoapBaseObjects {
 			}
 		}
 	}
-	public class FilterPart {
-		private transient String[] apex_schema_type_info = new List<String>{
-			s_ns0,
-			'true',
-			'false'
-		};
-		private transient String[] field_order_type_info = new List<String>{};
-		public FilterPart(DOM.XmlNode responseNode) {
-			Set<DOM.XmlNode> nodesParsed = new Set<DOM.XmlNode>();
+	public virtual class FilterPart {
+		public FilterPart() {
 		}
-		public void populateXmlNode(Dom.XmlNode outerNode) {
+		public FilterPart(DOM.XmlNode responseNode) {
+		}
+		public virtual void populateXmlNode(Dom.XmlNode outerNode) {
 		}
 	}
 
