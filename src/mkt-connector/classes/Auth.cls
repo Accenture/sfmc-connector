@@ -67,7 +67,6 @@ public without sharing class Auth {
 				system.debug(res.getBody());
 				system.debug(res.getStatus());
 				TokenResponseError errorRes = (TokenResponseError) JSON.deserialize(res.getBody(), TokenResponseError.class);
-				
 				throw new AuthException(errorRes);
 			}
 

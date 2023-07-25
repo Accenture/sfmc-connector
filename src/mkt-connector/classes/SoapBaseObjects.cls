@@ -21,14 +21,11 @@ public with sharing class SoapBaseObjects {
 		public String RequestType;
 		// Restriction enumeration: Low, Medium, High
 		public String QueuePriority;
-
 		public String Action;
-
 		public UpdateOptions() {
 		}
 		public UpdateOptions(DOM.XmlNode responseNode) {
 			Set<DOM.XmlNode> nodesParsed = new Set<DOM.XmlNode>();
-
 			Dom.XmlNode[] SendResponseToChildren = responseNode.getChildElements();
 			soapBaseObjects.AsyncResponse[] SendResponseToList = new List<soapBaseObjects.AsyncResponse>();
 			if (
@@ -117,7 +114,6 @@ public with sharing class SoapBaseObjects {
 				? null
 				: QueuePriorityNode.getText();
 			nodesParsed.add(QueuePriorityNode);
-
 			DOM.XmlNode ActionNode = responseNode.getChildElement('Action', s_ns0);
 			this.Action = (ActionNode == null) ? null : ActionNode.getText();
 			nodesParsed.add(ActionNode);
@@ -128,7 +124,6 @@ public with sharing class SoapBaseObjects {
 			if (ClientObj != null) {
 				ClientObj.populateXmlNode(ClientNode);
 			}
-
 			soapBaseObjects.AsyncResponse[] SendResponseToObj = this.SendResponseTo;
 			if (SendResponseToObj != null) {
 				for (soapBaseObjects.AsyncResponse element : SendResponseToObj) {
@@ -140,7 +135,6 @@ public with sharing class SoapBaseObjects {
 					element.populateXmlNode(SendResponseToNode);
 				}
 			}
-
 			soapBaseObjects.Options_SaveOptions_element SaveOptionsObj = this.SaveOptions;
 			Dom.XmlNode SaveOptionsNode = outerNode.addChildElement(
 				'SaveOptions',
@@ -208,7 +202,6 @@ public with sharing class SoapBaseObjects {
 			QueuePriorityNode.addTextNode(
 				(this.QueuePriority == null) ? '' : this.QueuePriority
 			);
-
 			Dom.XmlNode ActionNode = outerNode.addChildElement('Action', s_ns0, '');
 			ActionNode.addTextNode((this.Action == null) ? '' : this.Action);
 		}
@@ -216,7 +209,6 @@ public with sharing class SoapBaseObjects {
 	public class UpdateRequest_element {
 		public soapBaseObjects.UpdateOptions Options;
 		public soapBaseObjects.APIObject[] Objects;
-
 		public UpdateRequest_element() {
 		}
 		public UpdateRequest_element(
@@ -232,7 +224,6 @@ public with sharing class SoapBaseObjects {
 			if (OptionsObj != null) {
 				OptionsObj.populateXmlNode(OptionsNode);
 			}
-
 			soapBaseObjects.APIObject[] ObjectsObj = this.Objects;
 			if (ObjectsObj != null) {
 				for (soapBaseObjects.APIObject element : ObjectsObj) {
@@ -250,12 +241,10 @@ public with sharing class SoapBaseObjects {
 		public soapBaseObjects.UpdateResult[] Results;
 		public String RequestID;
 		public String OverallStatus;
-
 		public UpdateResponse_element() {
 		}
 		public UpdateResponse_element(DOM.XmlNode responseNode) {
 			Set<DOM.XmlNode> nodesParsed = new Set<DOM.XmlNode>();
-
 			Dom.XmlNode[] ResultsChildren = responseNode.getChildElements();
 			soapBaseObjects.UpdateResult[] ResultsList = new List<soapBaseObjects.UpdateResult>();
 			if (ResultsChildren == null || ResultsChildren.size() == 0) {
@@ -302,11 +291,9 @@ public with sharing class SoapBaseObjects {
 		public String RequestType;
 		public String ResultType;
 		public String ResultDetailXML;
-
 		public soapBaseObjects.APIObject Object_x;
 		public soapBaseObjects.UpdateResult[] UpdateResults;
 		public String ParentPropertyName;
-
 		public UpdateResult() {
 		}
 		public UpdateResult(DOM.XmlNode responseNode) {
@@ -503,13 +490,11 @@ public with sharing class SoapBaseObjects {
 			ResultDetailXMLNode.addTextNode(
 				(this.ResultDetailXML == null) ? '' : this.ResultDetailXML
 			);
-
 			soapBaseObjects.APIObject Object_xObj = this.Object_x;
 			Dom.XmlNode Object_xNode = outerNode.addChildElement('Object', s_ns0, '');
 			if (Object_xObj != null) {
 				Object_xObj.populateXmlNode(Object_xNode);
 			}
-
 			soapBaseObjects.UpdateResult[] UpdateResultsObj = this.UpdateResults;
 			if (UpdateResultsObj != null) {
 				for (soapBaseObjects.UpdateResult element : UpdateResultsObj) {
@@ -538,14 +523,11 @@ public with sharing class SoapBaseObjects {
 		public Integer ID;
 		public String ObjectID;
 		public String CustomerKey;
-
 		public String ObjectState;
-
 		public String Status;
 		public DateTime CompleteDate;
 		public String CallStatus;
 		public String CallMessage;
-
 		public AsyncRequestResult() {
 		}
 		public AsyncRequestResult(DOM.XmlNode responseNode) {
@@ -593,7 +575,6 @@ public with sharing class SoapBaseObjects {
 				? null
 				: CustomerKeyNode.getText();
 			nodesParsed.add(CustomerKeyNode);
-
 			DOM.XmlNode ObjectStateNode = responseNode.getChildElement(
 				'ObjectState',
 				s_ns0
@@ -663,7 +644,6 @@ public with sharing class SoapBaseObjects {
 			CustomerKeyNode.addTextNode(
 				(this.CustomerKey == null) ? '' : this.CustomerKey
 			);
-
 			Dom.XmlNode ObjectStateNode = outerNode.addChildElement(
 				'ObjectState',
 				s_ns0,
@@ -709,7 +689,6 @@ public with sharing class SoapBaseObjects {
 		public Boolean IncludeResults;
 		public Boolean IncludeObjects;
 		public Boolean OnlyIncludeBase;
-
 		public AsyncResponse() {
 		}
 		public AsyncResponse(DOM.XmlNode responseNode) {
@@ -831,12 +810,10 @@ public with sharing class SoapBaseObjects {
 		public String RequestType;
 		// Restriction enumeration: Low, Medium, High
 		public String QueuePriority;
-
 		public CreateOptions() {
 		}
 		public CreateOptions(DOM.XmlNode responseNode) {
 			Set<DOM.XmlNode> nodesParsed = new Set<DOM.XmlNode>();
-
 			Dom.XmlNode[] SendResponseToChildren = responseNode.getChildElements();
 			soapBaseObjects.AsyncResponse[] SendResponseToList = new List<soapBaseObjects.AsyncResponse>();
 			if (
@@ -932,7 +909,6 @@ public with sharing class SoapBaseObjects {
 			if (ClientObj != null) {
 				ClientObj.populateXmlNode(ClientNode);
 			}
-
 			soapBaseObjects.AsyncResponse[] SendResponseToObj = this.SendResponseTo;
 			if (SendResponseToObj != null) {
 				for (soapBaseObjects.AsyncResponse element : SendResponseToObj) {
@@ -944,7 +920,6 @@ public with sharing class SoapBaseObjects {
 					element.populateXmlNode(SendResponseToNode);
 				}
 			}
-
 			soapBaseObjects.Options_SaveOptions_element SaveOptionsObj = this.SaveOptions;
 			Dom.XmlNode SaveOptionsNode = outerNode.addChildElement(
 				'SaveOptions',
@@ -1017,7 +992,6 @@ public with sharing class SoapBaseObjects {
 	public class CreateRequest_element {
 		public soapBaseObjects.CreateOptions Options;
 		public soapBaseObjects.APIObject[] Objects;
-
 		public CreateRequest_element() {
 		}
 		public CreateRequest_element(
@@ -1033,7 +1007,6 @@ public with sharing class SoapBaseObjects {
 			if (OptionsObj != null) {
 				OptionsObj.populateXmlNode(OptionsNode);
 			}
-
 			soapBaseObjects.APIObject[] ObjectsObj = this.Objects;
 			if (ObjectsObj != null) {
 				for (soapBaseObjects.APIObject element : ObjectsObj) {
@@ -1051,12 +1024,10 @@ public with sharing class SoapBaseObjects {
 		public soapBaseObjects.CreateResult[] Results;
 		public String RequestID;
 		public String OverallStatus;
-
 		public CreateResponse_element() {
 		}
 		public CreateResponse_element(DOM.XmlNode responseNode) {
 			Set<DOM.XmlNode> nodesParsed = new Set<DOM.XmlNode>();
-
 			Dom.XmlNode[] ResultsChildren = responseNode.getChildElements();
 			soapBaseObjects.CreateResult[] ResultsList = new List<soapBaseObjects.CreateResult>();
 			if (ResultsChildren == null || ResultsChildren.size() == 0) {
@@ -1103,13 +1074,11 @@ public with sharing class SoapBaseObjects {
 		public String RequestType;
 		public String ResultType;
 		public String ResultDetailXML;
-
 		public Integer NewID;
 		public String NewObjectID;
 		public soapBaseObjects.APIObject Object_x;
 		public soapBaseObjects.CreateResult[] CreateResults;
 		public String ParentPropertyName;
-
 		public CreateResult() {
 		}
 		public CreateResult(DOM.XmlNode responseNode) {
@@ -1205,7 +1174,6 @@ public with sharing class SoapBaseObjects {
 				? null
 				: NewObjectIDNode.getText();
 			nodesParsed.add(NewObjectIDNode);
-
 			DOM.XmlNode Object_xNode = responseNode.getChildElement('Object', s_ns0);
 			if (Object_xNode == null) {
 				this.Object_x = null;
@@ -1337,7 +1305,6 @@ public with sharing class SoapBaseObjects {
 			if (Object_xObj != null) {
 				Object_xObj.populateXmlNode(Object_xNode);
 			}
-
 			soapBaseObjects.CreateResult[] CreateResultsObj = this.CreateResults;
 			if (CreateResultsObj != null) {
 				for (soapBaseObjects.CreateResult element : CreateResultsObj) {
@@ -1374,12 +1341,10 @@ public with sharing class SoapBaseObjects {
 		public String RequestType;
 		// Restriction enumeration: Low, Medium, High
 		public String QueuePriority;
-
 		public DeleteOptions() {
 		}
 		public DeleteOptions(DOM.XmlNode responseNode) {
 			Set<DOM.XmlNode> nodesParsed = new Set<DOM.XmlNode>();
-
 			Dom.XmlNode[] SendResponseToChildren = responseNode.getChildElements();
 			soapBaseObjects.AsyncResponse[] SendResponseToList = new List<soapBaseObjects.AsyncResponse>();
 			if (
@@ -1475,7 +1440,6 @@ public with sharing class SoapBaseObjects {
 			if (ClientObj != null) {
 				ClientObj.populateXmlNode(ClientNode);
 			}
-
 			soapBaseObjects.AsyncResponse[] SendResponseToObj = this.SendResponseTo;
 			if (SendResponseToObj != null) {
 				for (soapBaseObjects.AsyncResponse element : SendResponseToObj) {
@@ -1487,7 +1451,6 @@ public with sharing class SoapBaseObjects {
 					element.populateXmlNode(SendResponseToNode);
 				}
 			}
-
 			soapBaseObjects.Options_SaveOptions_element SaveOptionsObj = this.SaveOptions;
 			Dom.XmlNode SaveOptionsNode = outerNode.addChildElement(
 				'SaveOptions',
@@ -1560,7 +1523,6 @@ public with sharing class SoapBaseObjects {
 	public class DeleteRequest_element {
 		public soapBaseObjects.DeleteOptions Options;
 		public soapBaseObjects.APIObject[] Objects;
-
 		public DeleteRequest_element() {
 		}
 		public DeleteRequest_element(
@@ -1576,7 +1538,6 @@ public with sharing class SoapBaseObjects {
 			if (OptionsObj != null) {
 				OptionsObj.populateXmlNode(OptionsNode);
 			}
-
 			soapBaseObjects.APIObject[] ObjectsObj = this.Objects;
 			if (ObjectsObj != null) {
 				for (soapBaseObjects.APIObject element : ObjectsObj) {
@@ -1594,12 +1555,10 @@ public with sharing class SoapBaseObjects {
 		public soapBaseObjects.DeleteResult[] Results;
 		public String RequestID;
 		public String OverallStatus;
-
 		public DeleteResponse_element() {
 		}
 		public DeleteResponse_element(DOM.XmlNode responseNode) {
 			Set<DOM.XmlNode> nodesParsed = new Set<DOM.XmlNode>();
-
 			Dom.XmlNode[] ResultsChildren = responseNode.getChildElements();
 			soapBaseObjects.DeleteResult[] ResultsList = new List<soapBaseObjects.DeleteResult>();
 			if (ResultsChildren == null || ResultsChildren.size() == 0) {
@@ -1646,9 +1605,7 @@ public with sharing class SoapBaseObjects {
 		public String RequestType;
 		public String ResultType;
 		public String ResultDetailXML;
-
 		public soapBaseObjects.APIObject Object_x;
-
 		public DeleteResult() {
 		}
 		public DeleteResult(DOM.XmlNode responseNode) {
@@ -1821,7 +1778,6 @@ public with sharing class SoapBaseObjects {
 			ResultDetailXMLNode.addTextNode(
 				(this.ResultDetailXML == null) ? '' : this.ResultDetailXML
 			);
-
 			soapBaseObjects.APIObject Object_xObj = this.Object_x;
 			Dom.XmlNode Object_xNode = outerNode.addChildElement('Object', s_ns0, '');
 			if (Object_xObj != null) {
@@ -1849,7 +1805,6 @@ public with sharing class SoapBaseObjects {
 		public String RequestType;
 		public String ResultType;
 		public String ResultDetailXML;
-
 		public Result() {
 		}
 		public Result(DOM.XmlNode responseNode) {
@@ -2022,9 +1977,7 @@ public with sharing class SoapBaseObjects {
 		public Integer ID;
 		public String ObjectID;
 		public String CustomerKey;
-
 		public String ObjectState;
-
 		public String RequestID;
 		public String ConversationID;
 		public String StatusCode;
@@ -2034,7 +1987,6 @@ public with sharing class SoapBaseObjects {
 		// Restriction enumeration: Synchronous, Asynchronous
 		public String RequestType;
 		public String RequestObjectType;
-
 		public ResultItem() {
 		}
 		public ResultItem(DOM.XmlNode responseNode) {
@@ -2082,7 +2034,6 @@ public with sharing class SoapBaseObjects {
 				? null
 				: CustomerKeyNode.getText();
 			nodesParsed.add(CustomerKeyNode);
-
 			DOM.XmlNode ObjectStateNode = responseNode.getChildElement(
 				'ObjectState',
 				s_ns0
@@ -2187,7 +2138,6 @@ public with sharing class SoapBaseObjects {
 			CustomerKeyNode.addTextNode(
 				(this.CustomerKey == null) ? '' : this.CustomerKey
 			);
-
 			Dom.XmlNode ObjectStateNode = outerNode.addChildElement(
 				'ObjectState',
 				s_ns0,
@@ -2268,9 +2218,7 @@ public with sharing class SoapBaseObjects {
 		public Integer ID;
 		public String ObjectID;
 		public String CustomerKey;
-
 		public String ObjectState;
-
 		public String RequestID;
 		public String ConversationID;
 		public String OverallStatusCode;
@@ -2283,7 +2231,6 @@ public with sharing class SoapBaseObjects {
 		public String ResultDetailXML;
 		public Integer SequenceCode;
 		public Integer CallsInConversation;
-
 		public ResultMessage() {
 		}
 		public ResultMessage(DOM.XmlNode responseNode) {
@@ -2331,7 +2278,6 @@ public with sharing class SoapBaseObjects {
 				? null
 				: CustomerKeyNode.getText();
 			nodesParsed.add(CustomerKeyNode);
-
 			DOM.XmlNode ObjectStateNode = responseNode.getChildElement(
 				'ObjectState',
 				s_ns0
@@ -2460,7 +2406,6 @@ public with sharing class SoapBaseObjects {
 			CustomerKeyNode.addTextNode(
 				(this.CustomerKey == null) ? '' : this.CustomerKey
 			);
-
 			Dom.XmlNode ObjectStateNode = outerNode.addChildElement(
 				'ObjectState',
 				s_ns0,
@@ -2574,16 +2519,13 @@ public with sharing class SoapBaseObjects {
 		public String RequestType;
 		// Restriction enumeration: Low, Medium, High
 		public String QueuePriority;
-
 		public Integer BatchSize;
 		public Boolean IncludeObjects;
 		public Boolean OnlyIncludeBase;
-
 		public RetrieveOptions() {
 		}
 		public RetrieveOptions(DOM.XmlNode responseNode) {
 			Set<DOM.XmlNode> nodesParsed = new Set<DOM.XmlNode>();
-
 			Dom.XmlNode[] SendResponseToChildren = responseNode.getChildElements();
 			soapBaseObjects.AsyncResponse[] SendResponseToList = new List<soapBaseObjects.AsyncResponse>();
 			if (
@@ -2703,7 +2645,6 @@ public with sharing class SoapBaseObjects {
 			if (ClientObj != null) {
 				ClientObj.populateXmlNode(ClientNode);
 			}
-
 			soapBaseObjects.AsyncResponse[] SendResponseToObj = this.SendResponseTo;
 			if (SendResponseToObj != null) {
 				for (soapBaseObjects.AsyncResponse element : SendResponseToObj) {
@@ -2715,7 +2656,6 @@ public with sharing class SoapBaseObjects {
 					element.populateXmlNode(SendResponseToNode);
 				}
 			}
-
 			soapBaseObjects.Options_SaveOptions_element SaveOptionsObj = this.SaveOptions;
 			Dom.XmlNode SaveOptionsNode = outerNode.addChildElement(
 				'SaveOptions',
@@ -2817,14 +2757,12 @@ public with sharing class SoapBaseObjects {
 		public String[] Properties;
 		public soapBaseObjects.FilterPart Filter;
 		public soapBaseObjects.AsyncResponse[] RespondTo;
-
 		public String ContinueRequest;
 		public Boolean QueryAllAccounts;
 		public Boolean RetrieveAllSinceLastBatch;
 		public Boolean RepeatLastResult;
 		public soapBaseObjects.RetrieveRequest_Retrieves_element Retrieves;
 		public soapBaseObjects.RetrieveOptions Options;
-
 		public RetrieveRequest() {
 		}
 		public RetrieveRequest(DOM.XmlNode responseNode) {
@@ -2985,12 +2923,10 @@ public with sharing class SoapBaseObjects {
 					PropertiesNode.addTextNode(String.valueOf(element));
 				}
 			}
-
 			if (this.Filter != null) {
 				Dom.XmlNode FilterNode = outerNode.addChildElement('Filter', s_ns0, '');
 				this.Filter.populateXmlNode(FilterNode);
 			}
-
 			soapBaseObjects.AsyncResponse[] RespondToObj = this.RespondTo;
 			if (RespondToObj != null) {
 				for (soapBaseObjects.AsyncResponse element : RespondToObj) {
@@ -3010,7 +2946,6 @@ public with sharing class SoapBaseObjects {
 				);
 				ContinueRequestNode.addTextNode(this.ContinueRequest);
 			}
-
 			if (this.QueryAllAccounts != null) {
 				Dom.XmlNode QueryAllAccountsNode = outerNode.addChildElement(
 					'QueryAllAccounts',
@@ -3029,7 +2964,6 @@ public with sharing class SoapBaseObjects {
 					String.valueOf(this.RetrieveAllSinceLastBatch)
 				);
 			}
-
 			if (this.RepeatLastResult != null) {
 				Dom.XmlNode RepeatLastResultNode = outerNode.addChildElement(
 					'RepeatLastResult',
@@ -3038,7 +2972,6 @@ public with sharing class SoapBaseObjects {
 				);
 				RepeatLastResultNode.addTextNode(String.valueOf(this.RepeatLastResult));
 			}
-
 			if (this.Retrieves != null) {
 				Dom.XmlNode RetrievesNode = outerNode.addChildElement(
 					'Retrieves',
@@ -3047,7 +2980,6 @@ public with sharing class SoapBaseObjects {
 				);
 				this.Retrieves.populateXmlNode(RetrievesNode);
 			}
-
 			if (this.Options != null) {
 				Dom.XmlNode OptionsNode = outerNode.addChildElement(
 					'Options',
@@ -3060,7 +2992,6 @@ public with sharing class SoapBaseObjects {
 	}
 	public class RetrieveRequest_Retrieves_element {
 		public soapBaseObjects.Request[] Request;
-
 		public RetrieveRequest_Retrieves_element() {
 		}
 		public RetrieveRequest_Retrieves_element(DOM.XmlNode responseNode) {
@@ -3098,7 +3029,6 @@ public with sharing class SoapBaseObjects {
 	}
 	public class RetrieveRequestMsg_element {
 		public soapBaseObjects.RetrieveRequest RetrieveRequest;
-
 		public RetrieveRequestMsg_element() {
 		}
 		public RetrieveRequestMsg_element(
@@ -3123,12 +3053,10 @@ public with sharing class SoapBaseObjects {
 		public String RequestID;
 		public Dom.XmlNode[] Results;
 		// public soapBaseObjects.APIObject[] Results;
-
 		public RetrieveResponseMsg_element() {
 		}
 		public RetrieveResponseMsg_element(DOM.XmlNode responseNode) {
 			Set<DOM.XmlNode> nodesParsed = new Set<DOM.XmlNode>();
-
 			DOM.XmlNode OverallStatusNode = responseNode.getChildElement(
 				'OverallStatus',
 				s_ns0
@@ -3168,7 +3096,6 @@ public with sharing class SoapBaseObjects {
 		// Restriction enumeration: AddOnly, Default, Nothing, UpdateAdd, UpdateOnly, Delete
 		public String SaveAction;
 		public Boolean TrackChanges;
-
 		public SaveOption() {
 		}
 		public SaveOption(DOM.XmlNode responseNode) {
@@ -3232,7 +3159,6 @@ public with sharing class SoapBaseObjects {
 		public String ObjectID;
 		public String CustomerKey;
 		public String ObjectState;
-
 		public APIObject() {
 		}
 		public APIObject(DOM.XmlNode responseNode) {
@@ -3280,7 +3206,6 @@ public with sharing class SoapBaseObjects {
 				? null
 				: CustomerKeyNode.getText();
 			nodesParsed.add(CustomerKeyNode);
-
 			DOM.XmlNode ObjectStateNode = responseNode.getChildElement(
 				'ObjectState',
 				s_ns0
@@ -3323,7 +3248,6 @@ public with sharing class SoapBaseObjects {
 			CustomerKeyNode.addTextNode(
 				(this.CustomerKey == null) ? '' : this.CustomerKey
 			);
-
 			Dom.XmlNode ObjectStateNode = outerNode.addChildElement(
 				'ObjectState',
 				s_ns0,
@@ -3337,7 +3261,6 @@ public with sharing class SoapBaseObjects {
 	public class APIProperty {
 		public String Name;
 		public String Value;
-
 		public APIProperty() {
 		}
 		public APIProperty(DOM.XmlNode responseNode) {
@@ -3372,7 +3295,6 @@ public with sharing class SoapBaseObjects {
 		public Long EnterpriseID;
 		public String CustomerKey;
 		public String CustomerID;
-
 		public ClientID() {
 		}
 		public ClientID(DOM.XmlNode responseNode) {
@@ -3531,7 +3453,6 @@ public with sharing class SoapBaseObjects {
 		public String LogicalOperator;
 		public soapBaseObjects.FilterPart RightOperand;
 		public soapBaseObjects.ComplexFilterPart_AdditionalOperands_element AdditionalOperands;
-
 		public ComplexFilterPart() {
 		}
 		public ComplexFilterPart(DOM.XmlNode responseNode) {
@@ -3602,7 +3523,6 @@ public with sharing class SoapBaseObjects {
 			if (this.LogicalOperator != null) {
 				LogicalOperatorNode.addTextNode(this.LogicalOperator);
 			}
-
 			soapBaseObjects.FilterPart RightOperandObj = this.RightOperand;
 			Dom.XmlNode RightOperandNode = outerNode.addChildElement(
 				'RightOperand',
@@ -3612,7 +3532,6 @@ public with sharing class SoapBaseObjects {
 			if (RightOperandObj != null) {
 				RightOperandObj.populateXmlNode(RightOperandNode);
 			}
-
 			soapBaseObjects.ComplexFilterPart_AdditionalOperands_element AdditionalOperandsObj = this.AdditionalOperands;
 			Dom.XmlNode AdditionalOperandsNode = outerNode.addChildElement(
 				'AdditionalOperands',
@@ -3626,7 +3545,6 @@ public with sharing class SoapBaseObjects {
 	}
 	public class ComplexFilterPart_AdditionalOperands_element {
 		public soapBaseObjects.FilterPart[] Operand;
-
 		public ComplexFilterPart_AdditionalOperands_element() {
 		}
 		public ComplexFilterPart_AdditionalOperands_element(
@@ -3668,7 +3586,6 @@ public with sharing class SoapBaseObjects {
 	public class NullAPIProperty {
 		public String Name;
 		public String Value;
-
 		public NullAPIProperty() {
 		}
 		public NullAPIProperty(DOM.XmlNode responseNode) {
@@ -3698,7 +3615,6 @@ public with sharing class SoapBaseObjects {
 		public String SimpleOperator;
 		public String[] Value;
 		public DateTime[] DateValue;
-
 		public SimpleFilterPart() {
 		}
 		public SimpleFilterPart(DOM.XmlNode responseNode) {
