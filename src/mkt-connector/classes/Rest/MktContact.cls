@@ -1,8 +1,8 @@
 // Planned for Contact operations like delete
-public with sharing class Contact extends Rest{
-	public Contact(String accountId) {
+public with sharing class MktContact extends MktRest {
+	public MktContact(String accountId) {
 		super(accountId);
-	}  
+	}
 	@SuppressWarnings('PMD.VariableNamingConventions')
 	public class DeleteByKeyRequest {
 		public String[] Values;
@@ -14,10 +14,17 @@ public with sharing class Contact extends Rest{
 		public String requestServiceMessageID;
 		public String[] resultMessages;
 		public String serviceMessageID;
+		public String suppressionType;
+		public String priority;
+		public String responseDateTime;
+		public Boolean hasErrors;
 	}
-	public DeleteByKeyResponse deleteBeyKey(
-		DeleteByKeyRequest payload
-	) {
+	/**
+	 * Delete contacts from SFMC
+	 * @param payload DeleteByKeyRequest object for which contact key(s) to delete
+	 * @return  `DeleteByKeyResponse`
+	 */
+	public DeleteByKeyResponse deleteBeyKey(DeleteByKeyRequest payload) {
 		HttpResponse res = send(
 			'/contacts/v1/contacts/actions/delete?type=keys',
 			'POST',

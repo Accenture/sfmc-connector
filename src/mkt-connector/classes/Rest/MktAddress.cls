@@ -1,10 +1,10 @@
-// Planned for address validation
-public with sharing class Address extends Rest {
-	public Address(String accountId) {
+// Planned for MktAddress validation
+public with sharing class MktAddress extends MktRest {
+	public MktAddress(String accountId) {
 		super(accountId);
 	}
 	@SuppressWarnings('PMD.VariableNamingConventions')
-	public enum EmailAddressValidators {
+	public enum EmailMktAddressValidators {
 		SyntaxValidator,
 		MXValidator,
 		ListDetectiveValidator
@@ -12,17 +12,22 @@ public with sharing class Address extends Rest {
 
 	public class ValidateEmailRequest {
 		public String email;
-		public EmailAddressValidators[] validators;
+		public EmailMktAddressValidators[] validators;
 	}
 
 	public class ValidateEmailResponse {
 		public String email;
 		public Boolean valid;
-		public EmailAddressValidators failedValidation;
+		public EmailMktAddressValidators failedValidation;
 	}
+	/**
+	 * Used to validate against SFMC servers if the email is valid
+	 * @param payload ValidateEmailRequest object to validate
+	 * @return  `ValidateEmailResponse`
+	 */
 	public ValidateEmailResponse validateEmail(ValidateEmailRequest payload) {
 		HttpResponse res = send(
-			'/address/v1/validateEmail',
+			'/MktAddress/v1/validateEmail',
 			'POST',
 			JSON.serialize(payload)
 		);

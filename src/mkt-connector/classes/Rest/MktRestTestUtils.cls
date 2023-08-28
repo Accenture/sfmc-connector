@@ -1,6 +1,18 @@
 @isTest
-global with sharing class RestTestUtils {
+global with sharing class MktRestTestUtils {
+	/**
+	 * Helper method for test class to mock api
+	 */
 	global class GenericRestMock implements HttpCalloutMock {
+		global GenericRestMock() {
+			//add generic success for auth
+			addResponse(
+				'callout:SFMC_Custom/v2/token',
+				'POST',
+				200,
+				'{"access_token":"exampleaccesstoken","expires_in":1080,"token_type":"Bearer","rest_instance_url":"test.rest.marketingcloudapis.com","soap_instance_url":"test.soap.marketingcloudapis.com","scope":"email_read email_write email_send"}'
+			);
+		}
 		global Map<string, HttpResponse> responseMap = new Map<string, HttpResponse>();
 		global void addResponse(
 			String url,

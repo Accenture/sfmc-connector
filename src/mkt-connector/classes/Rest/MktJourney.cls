@@ -1,6 +1,6 @@
 @SuppressWarnings('PMD.VariableNamingConventions')
-public with sharing class Journey extends Rest {
-	public Journey(String accountId) {
+public with sharing class MktJourney extends MktRest {
+	public MktJourney(String accountId) {
 		super(accountId);
 	}
 	public class JourneyEventResponse {
@@ -27,19 +27,23 @@ public with sharing class Journey extends Rest {
 		) {
 			this.ContactKey = contactkey;
 			this.EventDefinitionKey = eventDefinitionKey;
-			this.Data = RestUtils.flattenSObject(data);
+			this.Data = MktRestUtils.flattenSObject(data);
 		}
 	}
-
-	public JourneyEventResponse sendEvent(JourneyEvent payload) {
+/**
+ * Single event to be added to journey
+ * @param payload JourneyEvent object to add to Journey
+ * @return  `MktJourney.JourneyEventResponse`
+ */
+	public MktJourney.JourneyEventResponse sendEvent(MktJourney.JourneyEvent payload) {
 		HttpResponse res = send(
 			'/interaction/v1/events',
 			'POST',
 			JSON.serialize(payload)
 		);
-		return (JourneyEventResponse) JSON.deserialize(
+		return (MktJourney.JourneyEventResponse) JSON.deserialize(
 			res.getBody(),
-			JourneyEventResponse.class
+			MktJourney.JourneyEventResponse.class
 		);
 	}
 }

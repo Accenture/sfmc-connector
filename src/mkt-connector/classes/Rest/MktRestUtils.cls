@@ -1,4 +1,9 @@
-public with sharing class RestUtils {
+public with sharing class MktRestUtils {
+	/**
+	 * Flatten nested sObject data for adding to SFMC Data Extension
+	 * @param data sObject to flatten
+	 * @return  `Map<String, Object>`
+	 */
 	public static Map<String, Object> flattenSObject(sObject data) {
 		Map<String, Object> dataMap = Data.getPopulatedFieldsAsMap();
 		Map<String, Object> finalDataMap = new Map<String, Object>();

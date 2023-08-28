@@ -1,18 +1,40 @@
-# Salesforce DX Project: Next Steps
+# Accenture Custom Connector for SFMC
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+Some templated code for anyone to integrate with SFMC using API. This attempts to demonstrate but not cover all use cases.
+Feel free to request features/propose pull requests.
 
-## How Do You Plan to Deploy Your Changes?
+## Auth Classes
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+### Auth
 
-## Configure Your Salesforce DX Project
+- authenticate - used to request access token OR retreive existing token from platform cache
+  - includes retry support
+  - handles platform cache expiry
+  - handles mutliple access tokens based on business unit (MID)
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+## Rest Classes
 
-## Read All About It
+### Address
 
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+- validateEmail - Validate Email Addresses using SFMC endpoint
+
+### Contact
+
+- deleteBeyKey - Request deletion of contact from SFMC
+
+### Data Sync
+
+- send - Send either a list of maps or a list of sobjects to SFMC.
+  - Any sObject child records will be automatically stringified to JSON
+
+### Journey
+
+- sendEvent - trigger entry event to SFMC either a list of maps or a list of sobjects to SFMC.
+  - Any sObject child records will be automatically stringified to JSON
+
+### Transactional Messaging
+
+- sendEmail - send transactional email
+- sendSms - send transactional sms
+- getEmailStatus - get status of transactional email send
+- getSmsStatus - get status of transactional sms send
