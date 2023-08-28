@@ -1,4 +1,5 @@
 @isTest
+@SuppressWarnings('PMD.AvoidGlobalModifier') // Must use global as is mock
 global with sharing class MktRestTestUtils {
 	/**
 	 * Helper method for test class to mock api
@@ -14,6 +15,9 @@ global with sharing class MktRestTestUtils {
 			);
 		}
 		global Map<string, HttpResponse> responseMap = new Map<string, HttpResponse>();
+		@SuppressWarnings(
+			'PMD.ExcessiveParameterList'
+		) // not ideal but most elegant way of doing this.
 		global void addResponse(
 			String url,
 			String method,

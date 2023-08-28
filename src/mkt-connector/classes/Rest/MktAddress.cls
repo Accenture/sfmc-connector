@@ -3,7 +3,7 @@ public with sharing class MktAddress extends MktRest {
 	public MktAddress(String accountId) {
 		super(accountId);
 	}
-	@SuppressWarnings('PMD.VariableNamingConventions')
+	@SuppressWarnings('PMD.FieldNamingConventions')
 	public enum EmailMktAddressValidators {
 		SyntaxValidator,
 		MXValidator,

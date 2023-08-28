@@ -3,7 +3,7 @@ public with sharing class MktContact extends MktRest {
 	public MktContact(String accountId) {
 		super(accountId);
 	}
-	@SuppressWarnings('PMD.VariableNamingConventions')
+	@SuppressWarnings('PMD.FieldNamingConventions')
 	public class DeleteByKeyRequest {
 		public String[] Values;
 		public String DeleteOperationType = 'ContactAndAttributes';

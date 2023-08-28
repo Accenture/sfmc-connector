@@ -1,7 +1,7 @@
 @isTest(isParallel=true)
 private with sharing class MktAuthTest {
 	@isTest
-	static void AuthFail() {
+	static void authFail() {
 		// Set mock callout class
 		MktRestTestUtils.GenericRestMock m = new MktRestTestUtils.GenericRestMock();
 		m.addResponse(

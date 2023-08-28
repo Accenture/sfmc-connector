@@ -14,7 +14,7 @@ public without sharing class MktAuth {
 		}
 	}
 
-	@SuppressWarnings('PMD.VariableNamingConventions')
+	@SuppressWarnings('PMD.FieldNamingConventions')
 	public class TokenRequest {
 		public string grant_type = 'client_credentials';
 		public string client_id = '{!$Credential.TrainingCustom.client_id}';
@@ -23,7 +23,7 @@ public without sharing class MktAuth {
 		public string account_id;
 	}
 
-	@SuppressWarnings('PMD.VariableNamingConventions')
+	@SuppressWarnings('PMD.FieldNamingConventions')
 	public class TokenResponse {
 		public string access_token;
 		public integer expires_in;
@@ -32,7 +32,7 @@ public without sharing class MktAuth {
 		public string soap_instance_url;
 		public string scope;
 	}
-	@SuppressWarnings('PMD.VariableNamingConventions')
+	@SuppressWarnings('PMD.FieldNamingConventions')
 	public class TokenResponseError {
 		public string error;
 		public string error_description;

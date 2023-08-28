@@ -35,7 +35,7 @@ public with sharing virtual class MktRest {
 		req.setEndpoint(auth.rest_instance_url + url);
 		req.setMethod(method);
 		req.setHeader('Content-Type', 'application/json');
-		req.setHeader('Authorization', 'Bearer ' + auth.access_token);
+		req.setHeader('Authorization', 'Bearer ' + auth.access_token); //NOPMD - token is retrieved from cache as cannot used named credential for storing token
 		if (String.isNotEmpty(payload)) {
 			req.setBody(payload);
 		}
