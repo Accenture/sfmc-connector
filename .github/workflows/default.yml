@@ -13,8 +13,8 @@ jobs:
         run: |
           npm i
           npm i -g @salesforce/cli
-          sf plugins install @salesforce/sfdx-scanner
-          sf plugins install sfdx-git-delta
+          'y' | sf plugins install @salesforce/sfdx-scanner
+          'y' | sf plugins install sfdx-git-delta
       - name: Run Code Scan
         shell: pwsh
         run: |
