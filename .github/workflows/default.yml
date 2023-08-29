@@ -18,5 +18,6 @@ jobs:
       - name: Run Code Scan
         shell: pwsh
         run: |
-          sf scanner run -t "force-app/**/*.cls,force-app/**/*.trigger" --engine "pmd" -o "codescan/apex-scan.json" -f json -s 3;
-          sf scanner run -t "force-app/**/*.js,!force-app/**/staticresources/**/*.js" --engine "eslint" --eslintconfig ".eslintrc.json" -o "codescan/eslint-scan.json"  -f json -s 3;
+          mkdir codescan
+          sf scanner run -t "src/**/*.cls,src/**/*.trigger" --engine "pmd" -o "codescan/apex-scan.json" -f json -s 3;
+          sf scanner run -t "src/**/*.js,!src/**/staticresources/**/*.js" --engine "eslint" --eslintconfig ".eslintrc.json" -o "codescan/eslint-scan.json"  -f json -s 3;
