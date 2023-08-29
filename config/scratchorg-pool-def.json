@@ -1,0 +1,9 @@
+{
+	"pool": {
+		"expiry": 3,
+		"config_file_path": "config/shapeRepresentation.json",
+		"tag": "sitvalidate",
+		"max_allocation": 30,
+		"script_file_path": "scripts/devops/tasks/task-pooling-scripts.sh"
+	}
+}

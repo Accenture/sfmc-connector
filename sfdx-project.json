@@ -4,16 +4,28 @@
       "path": "src/mkt-connector",
       "package": "mkt-connector",
       "versionNumber": "0.1.0.NEXT",
+      "default": false,
+      "versionDescription": "",
+      "dependencies": [],
+      "versionName": "ver 0.1",
+      "definitionFile": "config/shapeRepresentation.json"
+    },
+    {
+      "path": "src/in-development",
+      "package": "mkt-in-development",
+      "versionNumber": "0.1.0.NEXT",
       "default": true,
       "versionDescription": "",
       "dependencies": [],
-
       "versionName": "ver 0.1",
       "definitionFile": "config/shapeRepresentation.json"
     }
   ],
   "namespace": "",
   "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "59.0",
-  "packageAliases": {}
+  "sourceApiVersion": "58.0",
+  "packageAliases": {
+    "mkt-connector": "0Ho090000010wqsCAA",
+    "mkt-in-development": "0Ho09000001OTHERID"
+  }
 }
