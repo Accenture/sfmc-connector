@@ -1,0 +1,22 @@
+name: Test PowerShell on Ubuntu
+on: push
+
+jobs:
+  QualityChecks:
+    name: QualityChecks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Install Dependencies
+        shell: pwsh
+        run: |
+          npm i
+          npm i -g @salesforce/cli
+          sf plugins install @salesforce/sfdx-scanner
+          sf plugins install sfdx-git-delta
+      - name: Run Code Scan
+        shell: pwsh
+        run: |
+          sf scanner run -t "force-app/**/*.cls,force-app/**/*.trigger" --engine "pmd" -o "codescan/apex-scan.json" -f json -s 3;
+          sf scanner run -t "force-app/**/*.js,!force-app/**/staticresources/**/*.js" --engine "eslint" --eslintconfig ".eslintrc.json" -o "codescan/eslint-scan.json"  -f json -s 3;
