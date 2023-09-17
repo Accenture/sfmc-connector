@@ -1,0 +1,19 @@
+<template>
+    <div class="slds-is-relative">
+        <template lwc:if={_isLoading}>
+            <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+        </template>
+        <div class={styleForState}>
+            <label class="slds-form-element__label" for="text-input-id-52">
+                <template lwc:true={required}><abbr class="slds-required" title="required">* </abbr></template>
+                {label}
+            </label>
+            <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
+                <input lwc:dom="manual" type="tel" class="slds-input" data-id="country" name="country" required={required}
+                    onchange={handleChange} aria-describedby="error-message-id-53" id="text-input-id-52"
+                    aria-invalid={isValid}></input>
+                </div>
+            <div class="slds-form-element__help" id="error-message-id-53">{errorMessage}</div>
+        </div>
+    </div>
+</template>

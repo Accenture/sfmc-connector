@@ -38,3 +38,4 @@ Feel free to request features/propose pull requests.
 - sendSms - send transactional sms
 - getEmailStatus - get status of transactional email send
 - getSmsStatus - get status of transactional sms send
+

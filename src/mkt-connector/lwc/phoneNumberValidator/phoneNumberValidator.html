@@ -1,0 +1,41 @@
+<template>
+  <div class="slds-tabs_card">
+    <template lwc:if={_isEditing}>
+      <c-input-phone
+        label="Mobile Number"
+        initial-value={currentNumber}
+        initial-country="DE"
+        onvalidate={handleValidate}></c-input-phone>
+      <lightning-layout>
+        <lightning-layout-item padding="vertical-small" alignment-bump="right">
+          <lightning-button
+            variant="neutral"
+            label="Cancel"
+            onclick={toggleEdit}></lightning-button> </lightning-layout-item
+        ><lightning-layout-item padding="vertical-small" alignment-bump="left">
+          <lightning-button
+            variant="brand"
+            label="Save"
+            onclick={toggleEdit}></lightning-button> </lightning-layout-item
+      ></lightning-layout>
+    </template>
+    <template lwc:else>
+      <div class="slds-form-element slds-form-element_readonly">
+        <span class="slds-form-element__label">Mobile Number</span>
+        <div class="slds-form-element__control">
+          <lightning-formatted-phone
+            class="slds-form-element__static"
+            value={currentNumber}></lightning-formatted-phone>
+
+          <lightning-button-icon
+            class="inlineButton"
+            icon-name="utility:edit"
+            alternative-text="edit"
+            variant="bare"
+            title="Edit"
+            onclick={toggleEdit}></lightning-button-icon>
+        </div>
+      </div>
+    </template>
+  </div>
+</template>
