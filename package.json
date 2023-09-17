@@ -31,30 +31,20 @@
     "eslint-plugin-jsdoc": "^46.5.0",
     "eslint-plugin-unicorn": "^48.0.1",
     "htmlhint": "^1.1.4",
+    "husky": "^8.0.3",
     "stylelint": "^15.10.3",
     "stylelint-config-standard": "^34.0.0",
     "stylelint-declaration-strict-value": "^1.9.2",
-    "stylelint-prettier": "^4.0.2"
-  },
-  "devDependencies": {
+    "stylelint-prettier": "^4.0.2",
     "@salesforce/sfdx-lwc-jest": "^3.0.0",
     "lint-staged": "^14.0.1",
     "parse-git-numstat": "^1.1.2",
     "prettier": "3.0.2",
-    "prettier-plugin-apex": "2.0.1",
-    "xml-js": "^1.6.11"
+    "prettier-plugin-apex": "2.0.1"
   },
   "versions": {
-    "sfdx": "7.203.6"
+    "sf": "2.8.11"
   },
-  "plugins": [
-    "sfpowerkit",
-    "sfdmu",
-    "@salesforce/sfdx-scanner",
-    "texei-sfdx-plugin",
-    "sfdx-browserforce-plugin",
-    "sfdx-git-delta@stable"
-  ],
   "engines": {
     "node": ">=18.0.0"
   }
