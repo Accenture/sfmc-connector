@@ -1,3 +1,6 @@
+/**
+ * @description Helper related to REST endpoints
+ */
 public with sharing class MktRestUtils {
 	/**
 	 * Flatten nested sObject data for adding to SFMC Data Extension

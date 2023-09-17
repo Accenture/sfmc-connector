@@ -1,3 +1,6 @@
+/**
+ * @description Handles Transactional Messaging on SFMC API
+ */
 public with sharing class MktTransactionalMessaging extends MktRest {
 	public MktTransactionalMessaging(String accountId) {
 		super(accountId);

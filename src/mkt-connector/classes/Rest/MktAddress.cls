@@ -1,4 +1,6 @@
-// Planned for MktAddress validation
+/**
+ * @description Handles Address Validation on SFMC API
+ */
 public with sharing class MktAddress extends MktRest {
 	public MktAddress(String accountId) {
 		super(accountId);

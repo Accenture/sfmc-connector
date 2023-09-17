@@ -1,4 +1,6 @@
-// Planned for Contact operations like delete
+/**
+ * @description Handles Contact route operations on SFMC API
+ */
 public with sharing class MktContact extends MktRest {
 	public MktContact(String accountId) {
 		super(accountId);

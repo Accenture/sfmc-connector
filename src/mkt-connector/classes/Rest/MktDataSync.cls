@@ -1,3 +1,6 @@
+/**
+ * @description Handles Data Events on SFMC API
+ */
 public with sharing class MktDataSync extends MktRest {
 	public MktDataSync(String accountId) {
 		super(accountId);
@@ -43,7 +46,6 @@ public with sharing class MktDataSync extends MktRest {
 			'POST',
 			JSON.serialize(payload)
 		);
-		system.debug(res.getBody());
 		return (List<MktDataSync.RowResponse>) JSON.deserialize(
 			res.getBody(),
 			List<MktDataSync.RowResponse>.class

@@ -1,3 +1,6 @@
+/**
+ * @description Generic helper for REST endpoints
+ */
 public with sharing virtual class MktRest {
 	public String accountId;
 	public Boolean isRetry = false;

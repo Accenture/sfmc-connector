@@ -37,7 +37,6 @@ global with sharing class MktRestTestUtils {
 			);
 			if (res == null) {
 				// not found
-				system.debug(req);
 				res = new HttpResponse();
 				res.setBody(
 					'{"documentation":"https://developer.salesforce.com/docs/atlas.en-us.mc-apis.meta/mc-apis/error-handling.htm","errorcode":404,"message":"Not Found"}'

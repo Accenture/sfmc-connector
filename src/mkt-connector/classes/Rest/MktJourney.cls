@@ -1,3 +1,6 @@
+/**
+ * @description Handles interaction with Journeys on SFMC API
+ */
 @SuppressWarnings('PMD.FieldNamingConventions')
 public with sharing class MktJourney extends MktRest {
 	public MktJourney(String accountId) {
