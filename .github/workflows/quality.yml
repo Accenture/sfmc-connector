@@ -1,5 +1,5 @@
 name: Code Quality Checks
-on: push
+on: [pull_request]
 
 jobs:
   QualityChecks:
@@ -22,8 +22,8 @@ jobs:
           sf scanner run -t "src/**/*.js,!src/**/staticresources/**/*.js" --engine "eslint" --eslintconfig ".eslintrc.json" -o "codescan/eslint-scan.json"  -s 3;
   analyze:
     name: Analyze
-    runs-on: ${{ (matrix.language == 'swift' && 'macos-latest') || 'ubuntu-latest' }}
-    timeout-minutes: ${{ (matrix.language == 'swift' && 120) || 360 }}
+    runs-on: "ubuntu-latest"
+    timeout-minutes: 360
     permissions:
       actions: read
       contents: read
@@ -31,8 +31,6 @@ jobs:
 
     strategy:
       fail-fast: false
-      matrix:
-        language: ["javascript"]
 
     steps:
       - name: Checkout repository
@@ -42,9 +40,9 @@ jobs:
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v2
         with:
-          languages: ${{ matrix.language }}
+          languages: javascript
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2
         with:
-          category: "/language:${{matrix.language}}"
+          category: "/language:javascript"
