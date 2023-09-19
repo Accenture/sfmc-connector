@@ -1,0 +1,9 @@
+{
+  "orgName": "shapeRespresentation",
+  "edition": "Enterprise",
+  "features": ["COMMUNITIES", "PLATFORMCACHE"],
+  "hasSampleData": false,
+  "language": "en_US",
+  "objectSettings": {},
+  "settings": {}
+}

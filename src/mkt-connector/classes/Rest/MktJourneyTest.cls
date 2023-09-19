@@ -88,7 +88,7 @@ private class MktJourneyTest {
 		MktJourney a = new MktJourney('123');
 
 		try {
-			MktJourney.JourneyEventResponse res = a.sendEvent(e);
+			a.sendEvent(e);
 			Assert.fail('Request should fail');
 		} catch (Exception ex) {
 			Assert.areEqual(

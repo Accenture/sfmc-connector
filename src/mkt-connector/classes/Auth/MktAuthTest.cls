@@ -13,7 +13,7 @@ private with sharing class MktAuthTest {
 		Test.setMock(HttpCalloutMock.class, m);
 		Test.startTest();
 		try {
-			MktAuth.TokenResponse res = MktAuth.authenticate('123');
+			MktAuth.authenticate('123');
 			Assert.fail('Request should fail');
 		} catch (MktAuth.AuthException ex) {
 			Assert.areEqual(
