@@ -1,15 +1,26 @@
 /**
  * @description Handles Contact route operations on SFMC API
  */
+@SuppressWarnings('PMD.ExcessivePublicCount')
 public with sharing class MktContact extends MktRest {
+	/**
+	 * @description Constructor for handling calls to Contact endpoints
+	 * @param accountId MID of business unit
+	 */
 	public MktContact(String accountId) {
 		super(accountId);
 	}
-	@SuppressWarnings('PMD.FieldNamingConventions')
+	/**
+	 * @description Request structure for Deleting Contact
+	 */
+	@SuppressWarnings('PMD.FieldNamingConventions,PMD.VariableNamingConventions')
 	public class DeleteByKeyRequest {
 		public String[] Values;
 		public String DeleteOperationType = 'ContactAndAttributes';
 	}
+	/**
+	 * @description Response structure for Deleting Contact
+	 */
 	public class DeleteByKeyResponse {
 		public Boolean operationInitiated;
 		public Integer operationID;
@@ -22,7 +33,7 @@ public with sharing class MktContact extends MktRest {
 		public Boolean hasErrors;
 	}
 	/**
-	 * Delete contacts from SFMC
+	 * @description Delete contacts from SFMC
 	 * @param payload DeleteByKeyRequest object for which contact key(s) to delete
 	 * @return  `DeleteByKeyResponse`
 	 */

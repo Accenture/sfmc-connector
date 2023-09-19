@@ -3,7 +3,7 @@
  */
 public with sharing class MktRestUtils {
 	/**
-	 * Flatten nested sObject data for adding to SFMC Data Extension
+	 * @description Flatten nested sObject data for adding to SFMC Data Extension
 	 * @param data sObject to flatten
 	 * @return  `Map<String, Object>`
 	 */

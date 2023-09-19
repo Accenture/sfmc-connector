@@ -4,28 +4,39 @@
 public with sharing virtual class MktRest {
 	public String accountId;
 	public Boolean isRetry = false;
-
+	/**
+	 * @description Constructor for handling calls to Rest endpoints
+	 * @param accountId MID of business unit
+	 */
 	public MktRest(String accountId) {
 		this.accountId = accountId;
 	}
+	/**
+	 * @description Custom Exception related to Rest API calls
+	 */
 	public class RestException extends Exception {
 		public integer errorcode;
 		public string documentation;
-
+		/**
+		 * @description Constructor for Custom Exception
+		 * @param errorBody body returned from API where there was an error
+		 */
 		public RestException(MktRest.GenericErrorResponse errorBody) {
 			this(errorBody.message);
 			this.errorcode = errorBody.errorcode;
 			this.documentation = errorBody.documentation;
 		}
 	}
-
+	/**
+	 * @description Default response structure of error from SFMC Rest API
+	 */
 	public class GenericErrorResponse {
 		public string message;
 		public integer errorcode;
 		public string documentation;
 	}
 	/**
-	 * Send to SFMC using REST API
+	 * @description Send to SFMC using REST API
 	 * @param url to send to
 	 * @param method http method
 	 * @param payload stringified payload
@@ -59,7 +70,7 @@ public with sharing virtual class MktRest {
 		}
 	}
 	/**
-	 * Send to SFMC using REST API
+	 * @description Send to SFMC using REST API
 	 * @param url to send to
 	 * @param method http method
 	 * @return  `HttpResponse`
