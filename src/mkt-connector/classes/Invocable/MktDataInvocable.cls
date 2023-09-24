@@ -13,10 +13,7 @@ public with sharing class MktDataInvocable {
 		for (DataRequests dataRequest : requests) {
 			String k = dataRequest.accountId + '|' + dataRequest.externalKey;
 			if (consolidatedRequests.get(k) == null) {
-				consolidatedRequests.put(
-					k,
-					new List<MktDataSync.Row>()
-				);
+				consolidatedRequests.put(k, new List<MktDataSync.Row>());
 			}
 			consolidatedRequests.get(k)
 				.add(new MktDataSync.Row(new Set<String>{ 'Id' }, dataRequest.dataObj));
@@ -38,7 +35,7 @@ public with sharing class MktDataInvocable {
 		)
 		public sObject dataObj;
 		@InvocableVariable(
-			label='MID' 
+			label='MID'
 			description='ID if the Business Unit'
 			required=true
 		)

@@ -14,6 +14,11 @@ public with sharing class MktJourney extends MktRest {
 	 * @description Response structure for Journey Event
 	 */
 	public class JourneyEventResponse {
+		@InvocableVariable(
+			label='Event Instance Id'
+			description='ID of specific event triggered'
+			required=true
+		)
 		public string eventInstanceId;
 	}
 	/**
