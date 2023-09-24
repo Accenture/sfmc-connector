@@ -2,7 +2,7 @@ on: workflow_dispatch
 
 jobs:
   CreateNewVersion:
-    name: Create New Package Version
+    name: CreateNewPackageVersion
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
