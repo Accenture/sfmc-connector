@@ -1,0 +1,21 @@
+on: workflow_dispatch
+
+QualityChecks:
+  name: CreateNewVersion
+  runs-on: ubuntu-latest
+  steps:
+    - name: Check out repository code
+      uses: actions/checkout@v3
+      with:
+        ref: dev
+    - name: Install Dependencies
+      shell: pwsh
+      env:
+        DEVHUBAUTH: ${{ secrets.sfdx-url }}
+      run: |
+        npm i
+        npm i -g @salesforce/cli
+        'y' | sf plugins install @salesforce/sfdx-scanner
+        $env:DEVHUBAUTH > authFile.json
+        sf org login sfdx-url --sfdx-url-file authFile.json --alias DevHub --set-default-dev-hub
+        sf package version create --package "mkt-connector" --installation-key Accenture -w 30

@@ -1,8 +1,8 @@
 {
-  "orgName": "shapeRespresentation",
+  "orgName": "MKT-Custom-Connector",
   "edition": "Enterprise",
   "features": ["COMMUNITIES", "PLATFORMCACHE"],
-  "hasSampleData": false,
+  "hasSampleData": true,
   "language": "en_US",
   "objectSettings": {},
   "settings": {}
