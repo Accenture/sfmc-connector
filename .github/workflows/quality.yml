@@ -1,0 +1,52 @@
+name: Code Quality Checks
+on: [pull_request]
+
+jobs:
+  QualityChecks:
+    name: ScannerQualityChecks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Install Dependencies
+        shell: pwsh
+        run: |
+          npm i
+          npm i -g @salesforce/cli
+          'y' | sf plugins install @salesforce/sfdx-scanner
+      - name: Run Code Scan
+        shell: pwsh
+        run: |
+          mkdir codescan
+          sf scanner run -t "src/**/*.cls,src/**/*.trigger" --engine "pmd" -o "codescan/apex-scan.json" -s 3;
+          sf scanner run -t "src/**/*.js,!src/**/staticresources/**/*.js" --engine "eslint" --eslintconfig ".eslintrc.json" -o "codescan/eslint-scan.json"  -s 3;
+          ls codescan
+          if ((Test-Path -Path codescan/apex-scan.json) ||(Test-Path -Path codescan/eslint-scan.json) ){
+            Throw "Apex or LWC errors in codescan please check locally and rerun"
+          }
+  analyze:
+    name: Analyze
+    runs-on: "ubuntu-latest"
+    timeout-minutes: 360
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    strategy:
+      fail-fast: false
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Initializes the CodeQL tools for scanning.
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: javascript
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2
+        with:
+          category: "/language:javascript"

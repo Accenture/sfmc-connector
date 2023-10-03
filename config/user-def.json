@@ -1,0 +1,15 @@
+{
+  "LastName": "ScratchOrgUser",
+  "Alias": "scratch",
+  "TimeZoneSidKey": "Europe/Amsterdam",
+  "LocaleSidKey": "en_US",
+  "EmailEncodingKey": "UTF-8",
+  "LanguageLocaleKey": "en_US",
+  "Country": "Netherlands",
+  "UserPermissionsKnowledgeUser": true,
+  "UserPermissionsInteractionUser": true,
+  "UserPermissionsSupportUser": true,
+  "profileName": "System Administrator",
+  "permsets": [],
+  "generatePassword": true
+}
