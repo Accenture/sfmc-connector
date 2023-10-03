@@ -4,7 +4,7 @@
     <description>Business Unit of the Contact</description>
     <externalId>false</externalId>
     <label>Business Unit</label>
-    <required>true</required>
+    <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
     <type>Picklist</type>
     <valueSet>

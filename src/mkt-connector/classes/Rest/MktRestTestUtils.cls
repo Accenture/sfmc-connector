@@ -14,7 +14,7 @@ global with sharing class MktRestTestUtils {
 		global GenericRestMock() {
 			//add generic success for auth
 			addResponse(
-				'callout:SFMC_Custom/v2/token',
+				'callout:MKTCustomConnector/v2/token',
 				'POST',
 				200,
 				'{"access_token":"exampleaccesstoken","expires_in":1080,"token_type":"Bearer","rest_instance_url":"test.rest.marketingcloudapis.com","soap_instance_url":"test.soap.marketingcloudapis.com","scope":"email_read email_write email_send"}'
