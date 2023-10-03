@@ -1,3 +1,6 @@
+/**
+ * @description Invocable class for sending journey events to SFMC
+ */
 public with sharing class MktJourneyEventInvocable {
 	@InvocableMethod(
 		label='Send Journey Event'
@@ -5,6 +8,11 @@ public with sharing class MktJourneyEventInvocable {
 		category='Marketing Cloud'
 		callout=true
 	)
+	/**
+	 * @description Invocable method to send journey events to SFMC
+	 * @param requests from flow
+	 * @return  `List<MktJourney.JourneyEventResponse>` list of success events
+	 */
 	public static List<MktJourney.JourneyEventResponse> sendData(
 		List<DataRequests> requests
 	) {
@@ -20,6 +28,10 @@ public with sharing class MktJourneyEventInvocable {
 		}
 		return resList;
 	}
+
+	/**
+	 * @description Invocable structure for requests from flow
+	 */
 	public class DataRequests {
 		@InvocableVariable(
 			label='Record to Send'

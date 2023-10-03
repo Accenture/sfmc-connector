@@ -1,3 +1,6 @@
+/**
+ * @description Invocable class for sending data to SFMC sync
+ */
 public with sharing class MktDataInvocable {
 	@InvocableMethod(
 		label='Send data'
@@ -5,6 +8,11 @@ public with sharing class MktDataInvocable {
 		category='Marketing Cloud'
 		callout=true
 	)
+	/**
+	 * @description Invocable method to send data to SFMC
+	 * @param requests from flow
+	 * @return  `List<Boolean>` list of successes
+	 */
 	public static List<Boolean> sendData(List<DataRequests> requests) {
 		List<Boolean> resList = new List<Boolean>();
 
@@ -27,6 +35,10 @@ public with sharing class MktDataInvocable {
 		}
 		return resList;
 	}
+
+	/**
+	 * @description Invocable structure for requests from flow
+	 */
 	public class DataRequests {
 		@InvocableVariable(
 			label='Record to Send'

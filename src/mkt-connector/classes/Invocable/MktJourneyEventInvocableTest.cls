@@ -4,7 +4,6 @@ private class MktJourneyEventInvocableTest {
 	static void validateSendEventsObject() {
 		Contact c = new Contact(lastName = 'TESTContact');
 		insert c;
-		MktDataSync.Row r = new MktDataSync.Row(new Set<String>{ 'Id' }, c);
 		// Set mock callout class
 		MktRestTestUtils.GenericRestMock m = new MktRestTestUtils.GenericRestMock();
 		m.addResponse(
