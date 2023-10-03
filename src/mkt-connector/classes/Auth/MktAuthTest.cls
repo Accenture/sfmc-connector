@@ -5,7 +5,7 @@ private with sharing class MktAuthTest {
 		// Set mock callout class
 		MktRestTestUtils.GenericRestMock m = new MktRestTestUtils.GenericRestMock();
 		m.addResponse(
-			'callout:SFMC_Custom/v2/token',
+			'callout:MKTCustomConnector/v2/token',
 			'POST',
 			401,
 			'{"error":"invalid_client","error_description":"Invalid client ID. Use the client ID in Marketing Cloud Installed Packages.","error_uri":"https://developer.salesforce.com/docs"}'

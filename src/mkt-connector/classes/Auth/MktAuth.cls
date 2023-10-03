@@ -26,8 +26,8 @@ public without sharing class MktAuth {
 	@SuppressWarnings('PMD.FieldNamingConventions,PMD.VariableNamingConventions')
 	public class TokenRequest {
 		public string grant_type = 'client_credentials';
-		public string client_id = '{!$Credential.TrainingCustom.client_id}';
-		public string client_secret = '{!$Credential.TrainingCustom.client_secret}';
+		public string client_id = '{!$Credential.MKTCustomConnector.client_id}';
+		public string client_secret = '{!$Credential.MKTCustomConnector.client_secret}';
 		public string scope;
 		public string account_id;
 	}
@@ -78,7 +78,7 @@ public without sharing class MktAuth {
 		if (cacheRes == null || force == true) {
 			Http h = new Http();
 			HttpRequest req = new HttpRequest();
-			req.setEndpoint('callout:SFMC_Custom/v2/token');
+			req.setEndpoint('callout:MKTCustomConnector/v2/token');
 			req.setMethod('POST');
 			req.setHeader('Content-Type', 'application/json');
 			TokenRequest reqBody = new TokenRequest();

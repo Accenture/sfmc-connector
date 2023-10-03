@@ -14,10 +14,19 @@
       "path": "src/in-development",
       "package": "mkt-in-development",
       "versionNumber": "0.1.0.NEXT",
-      "default": true,
+      "default": false,
       "versionDescription": "",
       "dependencies": [],
       "versionName": "ver 0.1",
+      "definitionFile": "config/shapeRepresentation.json"
+    },
+    {
+      "path": "src/org-dependent",
+      "package": "OrgDependent",
+      "versionName": "ver 0.1",
+      "versionNumber": "0.1.0.NEXT",
+      "default": true,
+      "versionDescription": "",
       "definitionFile": "config/shapeRepresentation.json"
     }
   ],
