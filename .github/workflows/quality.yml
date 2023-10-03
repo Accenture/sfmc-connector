@@ -20,6 +20,7 @@ jobs:
           mkdir codescan
           sf scanner run -t "src/**/*.cls,src/**/*.trigger" --engine "pmd" -o "codescan/apex-scan.json" -s 3;
           sf scanner run -t "src/**/*.js,!src/**/staticresources/**/*.js" --engine "eslint" --eslintconfig ".eslintrc.json" -o "codescan/eslint-scan.json"  -s 3;
+          ls codescan
           if ((Test-Path -Path codescan/apex-scan.json) ||(Test-Path -Path codescan/eslint-scan.json) ){
             Throw "Apex or LWC errors in codescan please check locally and rerun"
           }
