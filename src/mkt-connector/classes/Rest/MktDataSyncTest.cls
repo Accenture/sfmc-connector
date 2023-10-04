@@ -82,10 +82,7 @@ private class MktDataSyncTest {
 		Test.startTest();
 		MktDataSync a = new MktDataSync('123');
 		try {
-			List<MktDataSync.RowResponse> res = a.dataUpsert(
-				'testDataExtension',
-				new List<MktDataSync.Row>{ r }
-			);
+			a.dataUpsert('testDataExtension', new List<MktDataSync.Row>{ r });
 			Assert.fail('Request should fail');
 		} catch (Exception ex) {
 			Assert.areEqual(

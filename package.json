@@ -5,7 +5,7 @@
   "description": "Library for integrating with SFMC",
   "scripts": {
     "lint": "npm run lint:lwc && npm run lint:aura",
-    "pipelineLint": "eslint force-app/**/*.js -f json -o report.json --quiet ; exit 0",
+    "pipelineLint": "eslint src/**/*.js -f json -o report.json --quiet ; exit 0",
     "lint:aura": "eslint **/aura/**",
     "lint:commit": "lint-staged --quiet",
     "lint:lwc": "eslint **/lwc/**",
@@ -14,47 +14,37 @@
     "test:unit:watch": "sfdx-lwc-jest --watch",
     "test:unit:debug": "sfdx-lwc-jest --debug",
     "test:unit:coverage": "sfdx-lwc-jest --coverage",
-    "fix": "eslint force-app --fix && stylelint force-app/**/lwc/**/*.css  --fix",
-    "prettier": "prettier --loglevel warn --write \"force-app/**/*.{cls,cmp,component,css,html,js,page,trigger,xml}\"",
+    "fix": "eslint src --fix && stylelint src/**/lwc/**/*.css  --fix",
+    "prettier": "prettier --write \"src/**/*.{cls,cmp,component,css,html,js,page,trigger,xml}\"",
     "prettier:verify": "prettier --list-different \"**/*.{cls,cmp,component,css,html,js,page,trigger,xml}\""
   },
   "dependencies": {
     "@lwc/eslint-plugin-lwc": "^1.6.3",
-    "@prettier/plugin-xml": "^3.2.0",
+    "@prettier/plugin-xml": "^3.2.1",
     "@salesforce/eslint-config-lwc": "^3.5.2",
     "@salesforce/eslint-plugin-aura": "^2.1.0",
     "@salesforce/eslint-plugin-lightning": "^1.0.0",
-    "eslint": "^8.48.0",
+    "eslint": "^8.50.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.28.1",
-    "eslint-plugin-jest": "^27.2.3",
-    "eslint-plugin-jsdoc": "^46.5.0",
+    "eslint-plugin-jest": "^27.4.2",
+    "eslint-plugin-jsdoc": "^46.8.2",
     "eslint-plugin-unicorn": "^48.0.1",
     "htmlhint": "^1.1.4",
+    "husky": "^8.0.3",
     "stylelint": "^15.10.3",
     "stylelint-config-standard": "^34.0.0",
     "stylelint-declaration-strict-value": "^1.9.2",
-    "stylelint-prettier": "^4.0.2"
-  },
-  "devDependencies": {
-    "@salesforce/sfdx-lwc-jest": "^3.0.0",
+    "stylelint-prettier": "^4.0.2",
+    "@salesforce/sfdx-lwc-jest": "^3.0.1",
     "lint-staged": "^14.0.1",
     "parse-git-numstat": "^1.1.2",
-    "prettier": "3.0.2",
-    "prettier-plugin-apex": "2.0.1",
-    "xml-js": "^1.6.11"
+    "prettier": "3.0.3",
+    "prettier-plugin-apex": "2.0.1"
   },
   "versions": {
-    "sfdx": "7.203.6"
+    "sf": "2.8.11"
   },
-  "plugins": [
-    "sfpowerkit",
-    "sfdmu",
-    "@salesforce/sfdx-scanner",
-    "texei-sfdx-plugin",
-    "sfdx-browserforce-plugin",
-    "sfdx-git-delta@stable"
-  ],
   "engines": {
     "node": ">=18.0.0"
   }

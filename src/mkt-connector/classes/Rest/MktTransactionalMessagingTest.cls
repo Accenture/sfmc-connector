@@ -70,10 +70,7 @@ private class MktTransactionalMessagingTest {
 		Test.startTest();
 		MktTransactionalMessaging a = new MktTransactionalMessaging('123');
 		try {
-			MktTransactionalMessaging.MessagingResponse res = a.sendEmail(
-				messageKey,
-				e
-			);
+			a.sendEmail(messageKey, e);
 			Assert.fail('Request should fail');
 		} catch (MKTRest.RestException ex) {
 			Assert.areEqual(
