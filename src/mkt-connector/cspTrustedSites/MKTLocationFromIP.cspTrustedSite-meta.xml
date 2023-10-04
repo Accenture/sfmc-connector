@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CspTrustedSite xmlns="http://soap.sforce.com/2006/04/metadata">
     <context>All</context>
-    <description>Used to determine users current country based on IP Address</description>
+    <description>Used to determine location based on IP Address</description>
     <endpointUrl>https://ipapi.co</endpointUrl>
     <isActive>true</isActive>
     <isApplicableToConnectSrc>true</isApplicableToConnectSrc>

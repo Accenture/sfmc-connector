@@ -22,10 +22,10 @@ module.exports = {
           }
         ],
         "custom-property-pattern": [
-          "^(b2b|exp)\\w+|(dxp|exp)(-[a-z0-9_]+)*$",
+          "^(dxp|mkt)(-[a-z0-9_]+)*$",
           {
             message: (name) =>
-              `Expected "${name}" to match supported properties: --b2b*, --exp*, --dxp-*`
+              `Expected "${name}" to match supported properties: --mkt-*,--dxp-*`
           }
         ]
       }

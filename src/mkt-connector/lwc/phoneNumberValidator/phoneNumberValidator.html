@@ -16,7 +16,8 @@
           <lightning-button
             variant="brand"
             label="Save"
-            onclick={toggleEdit}></lightning-button> </lightning-layout-item
+            onclick={handleSave}
+            disabled={isInvalid}></lightning-button> </lightning-layout-item
       ></lightning-layout>
     </template>
     <template lwc:else>

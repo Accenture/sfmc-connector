@@ -1,5 +1,5 @@
 import { LightningElement, api, track } from "lwc";
-import intlTelInput from "@salesforce/resourceUrl/intlTelInput";
+import intlTelInput from "@salesforce/resourceUrl/MKTIntlTelInput";
 import { loadScript, loadStyle } from "lightning/platformResourceLoader";
 const errorMap = [
   "Invalid number",
@@ -35,7 +35,6 @@ export default class InputPhone extends LightningElement {
   isValid = false;
   connectedCallback() {
     this._isLoading = true;
-    console.log("CONNECTED CALLBACK");
     Promise.all([
       loadStyle(this, intlTelInput + "/css/intlTelInput.min.css"),
       loadScript(this, intlTelInput + "/js/intlTelInput.min.js")
