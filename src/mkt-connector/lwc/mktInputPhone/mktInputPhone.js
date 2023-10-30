@@ -1,13 +1,21 @@
 import { LightningElement, api, track } from "lwc";
 import intlTelInput from "@salesforce/resourceUrl/MKTIntlTelInput";
 import { loadScript, loadStyle } from "lightning/platformResourceLoader";
+import LANG from "@salesforce/i18n/lang";
+import mktInvalidNumber from "@salesforce/label/c.mktInvalidNumber";
+import mktInvalidCountryCode from "@salesforce/label/c.mktInvalidCountryCode";
+import mktTooShort from "@salesforce/label/c.mktTooShort";
+import mktTooLong from "@salesforce/label/c.mktTooLong";
+import mktInvalidNumberForType from "@salesforce/label/c.mktInvalidNumberForType";
+
 const errorMap = [
-  "Invalid number",
-  "Invalid country code",
-  "Too short",
-  "Too long",
-  "Invalid number"
-]; // TODO update with labels to allow translation of errors
+  mktInvalidNumber,
+  mktInvalidCountryCode,
+  mktTooShort,
+  mktTooLong,
+  mktInvalidNumber
+];
+
 const numberTypeMap = [
   "FIXED_LINE",
   "MOBILE",
@@ -22,35 +30,45 @@ const numberTypeMap = [
   "VOICEMAIL",
   "UNKNOWN"
 ];
+
+const validTypes = {
+  mobile: ["MOBILE", "FIXED_LINE_OR_MOBILE"],
+  landline: ["FIXED_LINE", "FIXED_LINE_OR_MOBILE"]
+};
+
 export default class InputPhone extends LightningElement {
   @api defaultCountryCode;
   @api selectableCountryCodes;
   @api label = "Phone Number";
-  @api required = false;
   @api initialValue = "";
+  @api numberType;
   @track inputElem;
   @track iti;
   _isLoading = false;
   errorMessage = "";
   isValid = false;
+  /**
+   * Connected Callback Handler
+   */
   connectedCallback() {
     this._isLoading = true;
     Promise.all([
       loadStyle(this, intlTelInput + "/css/intlTelInput.min.css"),
       loadScript(this, intlTelInput + "/js/intlTelInput.min.js")
     ]).then(() => {
-      console.log("LOADED");
-      this.inputElem = this.template.querySelector("[data-id=country]");
       const settings = {
         utilsScript: intlTelInput + "/js/utils.js",
-        localizedCountries: {} // TODO provide local values for countries
+        localizedCountries: generateLocalCountryMap(
+          window.intlTelInputGlobals.getCountryData().map((val) => val.iso2),
+          LANG
+        )
       };
       if (this.onlyCountryCodes) {
         settings.onlyCountries = this.selectableCountryCodes;
       }
       if (this.defaultCountryCode) {
-        settings.initialCountry = [this.defaultCountryCode];
-        settings.preferredCountries = settings.initialCountry;
+        settings.initialCountry = this.defaultCountryCode;
+        settings.preferredCountries = [settings.initialCountry];
       } else {
         settings.initialCountry = "auto";
         settings.geoIpLookup = (callback) => {
@@ -60,13 +78,19 @@ export default class InputPhone extends LightningElement {
             .catch(() => callback(""));
         };
       }
-      this.iti = window.intlTelInput(this.inputElem, settings);
+      this.iti = window.intlTelInput(
+        this.template.querySelector("[data-id=country]"),
+        settings
+      );
       if (this.initialValue) {
         this.iti.setNumber(this.initialValue);
       }
       this._isLoading = false;
     });
   }
+  /**
+   * Handle change in value in the input field
+   */
   handleChange() {
     const baseEvent = {
       phoneNumber: this.iti.getNumber(),
@@ -76,22 +100,41 @@ export default class InputPhone extends LightningElement {
     if (baseEvent.isValidNumber) {
       baseEvent.location = this.iti.getSelectedCountryData();
       baseEvent.numberType = numberTypeMap[this.iti.getNumberType()];
-      this.errorMessage = "";
+      // if a specific numbertype was provided then filter for this
+      this.errorMessage =
+        this.numberType &&
+        validTypes[this.numberType].includes(baseEvent.numberType)
+          ? ""
+          : mktInvalidNumberForType;
     } else {
       baseEvent.errorCode = this.iti.getValidationError();
       baseEvent.errorMessage = errorMap[baseEvent.errorCode];
       this.errorMessage = baseEvent.errorMessage;
     }
-    console.log(JSON.stringify(baseEvent));
-    // Fire the custom event
     this.dispatchEvent(new CustomEvent("validate", { detail: baseEvent }));
   }
 
+  /**
+   * get style when invalid
+   * @returns {string} class string
+   */
   get styleForState() {
-    if (this.isValid) {
-      return "slds-form-element";
-    } else {
-      return "slds-form-element slds-has-error";
-    }
+    return this.isValid
+      ? "slds-form-element"
+      : "slds-form-element slds-has-error";
   }
+}
+/**
+ * Get local country names based on user language
+ * @param {string[]} iso2List list of countries to be translated
+ * @param {string} language target language
+ * @returns {object} map of iso codes to names of countries
+ */
+function generateLocalCountryMap(iso2List, language) {
+  const m = {};
+  const regionNames = new Intl.DisplayNames([language], { type: "region" });
+  for (const iso2 of iso2List) {
+    m[iso2] = regionNames.of(iso2.toUpperCase());
+  }
+  return m;
 }

@@ -1,0 +1,28 @@
+<template>
+  <div class="slds-is-relative">
+    <template lwc:if={_isLoading}>
+      <lightning-spinner
+        alternative-text="Loading"
+        size="small"></lightning-spinner>
+    </template>
+    <form class={styleForState}>
+      <label class="slds-form-element__label" for="inputphonenumber">
+        {label}
+      </label>
+      <input
+        lwc:dom="manual"
+        type="tel"
+        class="slds-input"
+        data-id="country"
+        name="country"
+        required={required}
+        oninput={handleChange}
+        aria-describedby="inputphonenumbererror"
+        id="inputphonenumber"
+        aria-invalid={isValid} />
+      <div class="slds-form-element__help" id="inputphonenumbererror">
+        {errorMessage}
+      </div>
+    </form>
+  </div>
+</template>

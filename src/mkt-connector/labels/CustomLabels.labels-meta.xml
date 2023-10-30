@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>mktInvalidNumber</fullName>
+        <categories>mkt</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Input phone number validation error Invalid Number</shortDescription>
+        <value>Invalid number</value>
+    </labels>
+    <labels>
+        <fullName>mktInvalidCountryCode</fullName>
+        <categories>mkt</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Input phone number validation error Invalid country code</shortDescription>
+        <value>Invalid country code</value>
+    </labels>
+    <labels>
+        <fullName>mktTooShort</fullName>
+        <categories>mkt</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Input phone number validation error Too short</shortDescription>
+        <value>Too short</value>
+    </labels>
+    <labels>
+        <fullName>mktTooLong</fullName>
+        <categories>mkt</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Input phone number validation error Too long</shortDescription>
+        <value>Too long</value>
+    </labels>
+    <labels>
+        <fullName>mktInvalidNumberForType</fullName>
+        <categories>mkt</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Input phone number validation error Invalid Number For Type</shortDescription>
+        <value>Invalid number for type</value>
+    </labels>
+</CustomLabels>
