@@ -3,8 +3,8 @@ private class MktContactTest {
 	@isTest
 	static void deleteBeyKeyTestSuccess() {
 		// Set mock callout class
-		MktRestTestUtils.GenericRestMock m = new MktRestTestUtils.GenericRestMock();
-		m.addResponse(
+		MktTestUtils.GenericMock m = new MktTestUtils.GenericMock();
+		m.addRestResponse(
 			'test.rest.marketingcloudapis.com/contacts/v1/contacts/actions/delete?type=keys',
 			'POST',
 			200,

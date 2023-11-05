@@ -7,6 +7,7 @@ public with sharing class MktJourneyEventInvocable {
 		description='Send Journey Event to Marketing Cloud'
 		category='Marketing Cloud'
 		callout=true
+		iconName='resource:MktIcon:icon'
 	)
 	/**
 	 * @description Invocable method to send journey events to SFMC

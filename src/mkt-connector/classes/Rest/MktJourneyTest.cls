@@ -17,8 +17,8 @@ private class MktJourneyTest {
 			c
 		);
 		// Set mock callout class
-		MktRestTestUtils.GenericRestMock m = new MktRestTestUtils.GenericRestMock();
-		m.addResponse(
+		MktTestUtils.GenericMock m = new MktTestUtils.GenericMock();
+		m.addRestResponse(
 			'test.rest.marketingcloudapis.com/interaction/v1/events',
 			'POST',
 			200,
@@ -46,8 +46,8 @@ private class MktJourneyTest {
 			}
 		);
 		// Set mock callout class
-		MktRestTestUtils.GenericRestMock m = new MktRestTestUtils.GenericRestMock();
-		m.addResponse(
+		MktTestUtils.GenericMock m = new MktTestUtils.GenericMock();
+		m.addRestResponse(
 			'test.rest.marketingcloudapis.com/interaction/v1/events',
 			'POST',
 			200,
@@ -76,8 +76,8 @@ private class MktJourneyTest {
 			}
 		);
 		// Set mock callout class
-		MktRestTestUtils.GenericRestMock m = new MktRestTestUtils.GenericRestMock();
-		m.addResponse(
+		MktTestUtils.GenericMock m = new MktTestUtils.GenericMock();
+		m.addRestResponse(
 			'test.rest.marketingcloudapis.com/interaction/v1/events',
 			'POST',
 			400,

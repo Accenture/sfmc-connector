@@ -6,8 +6,8 @@ private class MktDataInvocableTest {
 		insert c;
 		MktDataSync.Row r = new MktDataSync.Row(new Set<String>{ 'Id' }, c);
 		// Set mock callout class
-		MktRestTestUtils.GenericRestMock m = new MktRestTestUtils.GenericRestMock();
-		m.addResponse(
+		MktTestUtils.GenericMock m = new MktTestUtils.GenericMock();
+		m.addRestResponse(
 			'test.rest.marketingcloudapis.com/hub/v1/dataevents/key:testDataExtension/rowset',
 			'POST',
 			200,

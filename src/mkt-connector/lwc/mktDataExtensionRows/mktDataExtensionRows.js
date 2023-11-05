@@ -1,6 +1,7 @@
 import { LightningElement, api, wire } from "lwc";
 import getDataExtensionData from "@salesforce/apex/MKTDataExtension.getDataExtensionData";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
+import MktIcon from "@salesforce/resourceUrl/MktIcon";
 
 export default class MktDataExtensionRows extends LightningElement {
   @api name;
@@ -10,6 +11,7 @@ export default class MktDataExtensionRows extends LightningElement {
   @api recordId;
   @api accountId;
   rows;
+  iconSVG = MktIcon + "#icon";
 
   /**
    * Retrieve rows from SFMC for current recordid

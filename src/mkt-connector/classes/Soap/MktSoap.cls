@@ -47,7 +47,7 @@ public with sharing virtual class MktSoap {
 		MktAuth.TokenResponse auth = MktAuth.authenticate(this.accountId);
 		Http h = new Http();
 		HttpRequest req = new HttpRequest();
-		req.setEndpoint(auth.Soap_instance_url + 'Service.asmx');
+		req.setEndpoint(auth.Soap_instance_url + '/Service.asmx');
 		req.setMethod('POST');
 		req.setHeader('Content-Type', 'text/xml');
 		req.setHeader('SOAPAction', action);

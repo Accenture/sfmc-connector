@@ -7,6 +7,7 @@ public with sharing class MktDataInvocable {
 		description='Send data to a SFMC data extension'
 		category='Marketing Cloud'
 		callout=true
+		iconName='resource:MktIcon:icon'
 	)
 	/**
 	 * @description Invocable method to send data to SFMC
