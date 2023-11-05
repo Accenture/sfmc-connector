@@ -1,0 +1,14 @@
+.articlecustom {
+  border-width: var(
+    --slds-c-card-sizing-border,
+    var(--sds-c-card-sizing-border, var(--lwc-borderWidthThin, 1px))
+  ) !important;
+  border-style: solid !important;
+  border-color: var(
+    --slds-c-card-color-border,
+    var(
+      --sds-c-card-color-border,
+      var(--slds-g-color-border-base-1, rgb(201, 201, 201))
+    )
+  ) !important;
+}

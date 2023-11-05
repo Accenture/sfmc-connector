@@ -1,22 +1,36 @@
 <template>
-  <lightning-card title={componentTitle}>
-    <template lwc:if={rows}>
-      <template lwc:if={isEmpty}>
-        <div>No Rows Found</div>
+  <article class="slds-card articlecustom">
+    <div class="slds-page-header slds-grid">
+      <header class="slds-media slds-media_center slds-has-flexi-truncate">
+        <div class="slds-media__figure">
+          <lightning-icon icon-name="utility:campaign"></lightning-icon>
+        </div>
+        <div class="slds-media__body">
+          <h2 class="slds-card__header-title">
+            <span>{ componentTitle}</span>
+          </h2>
+        </div>
+      </header>
+    </div>
+    <div class="slds-card__body_inner">
+      <template lwc:if={rows}>
+        <template lwc:if={isEmpty}>
+          <div>No Rows Found</div>
+        </template>
+        <template lwc:else>
+          <lightning-datatable
+            key-field="rowNumber"
+            data={rows}
+            columns={columns}
+            hide-checkbox-column>
+          </lightning-datatable>
+        </template>
       </template>
       <template lwc:else>
-        <lightning-datatable
-          key-field="rowNumber"
-          data={rows}
-          columns={columns}
-          hide-checkbox-column>
-        </lightning-datatable>
+        <lightning-spinner
+          alternative-text="Loading"
+          size="small"></lightning-spinner>
       </template>
-    </template>
-    <template lwc:else>
-      <lightning-spinner
-        alternative-text="Loading"
-        size="small"></lightning-spinner>
-    </template>
-  </lightning-card>
+    </div>
+  </article>
 </template>
