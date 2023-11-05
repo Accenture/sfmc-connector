@@ -1,0 +1,22 @@
+<template>
+  <lightning-card title={componentTitle}>
+    <template lwc:if={rows}>
+      <template lwc:if={isEmpty}>
+        <div>No Rows Found</div>
+      </template>
+      <template lwc:else>
+        <lightning-datatable
+          key-field="rowNumber"
+          data={rows}
+          columns={columns}
+          hide-checkbox-column>
+        </lightning-datatable>
+      </template>
+    </template>
+    <template lwc:else>
+      <lightning-spinner
+        alternative-text="Loading"
+        size="small"></lightning-spinner>
+    </template>
+  </lightning-card>
+</template>
