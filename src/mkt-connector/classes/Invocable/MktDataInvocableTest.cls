@@ -25,10 +25,6 @@ private class MktDataInvocableTest {
 		action.setInvocationParameter('externalKey', 'testDataExtension');
 		List<Invocable.Action.Result> results = action.invoke();
 		Test.stopTest();
-		Assert.areEqual(
-			1,
-			results.size(),
-			'Success expects one result'
-		);
+		Assert.areEqual(1, results.size(), 'Success expects one result');
 	}
 }
