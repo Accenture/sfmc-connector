@@ -21,7 +21,9 @@ jobs:
           sf scanner run -t "src/**/*.cls,src/**/*.trigger" --engine "pmd" -o "codescan/apex-scan.json" -s 3;
           sf scanner run -t "src/**/*.js,!src/**/staticresources/**/*.js" --engine "eslint" --eslintconfig ".eslintrc.json" -o "codescan/eslint-scan.json"  -s 3;
           ls codescan
-          if ((Test-Path -Path codescan/apex-scan.json) ||(Test-Path -Path codescan/eslint-scan.json) ){
+          $apexErrors = Get-Content 'codescan/apex-scan.json' | ConvertFrom-Json
+          $eslintErrors = Get-Content 'codescan/eslint-scan.json' | ConvertFrom-Json
+          if ($apexErrors.count ||$eslintErrors.count ){
             Throw "Apex or LWC errors in codescan please check locally and rerun"
           }
   analyze:

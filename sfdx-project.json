@@ -7,32 +7,57 @@
       "default": false,
       "versionDescription": "",
       "dependencies": [],
-      "versionName": "ver 0.1",
-      "definitionFile": "config/shapeRepresentation.json"
-    },
-    {
-      "path": "src/in-development",
-      "package": "mkt-in-development",
-      "versionNumber": "0.1.0.NEXT",
-      "default": false,
-      "versionDescription": "",
-      "dependencies": [],
-      "versionName": "ver 0.1",
-      "definitionFile": "config/shapeRepresentation.json"
+      "versionName": "ver 0.1"
     },
     {
       "path": "src/org-dependent",
       "package": "OrgDependent",
       "versionName": "ver 0.1",
       "versionNumber": "0.1.0.NEXT",
-      "default": true,
-      "versionDescription": "",
-      "definitionFile": "config/shapeRepresentation.json"
+      "default": false,
+      "versionDescription": ""
+    },
+    {
+      "path": "./src-env-specific-pre",
+      "package": "src-env-specific-pre",
+      "versionNumber": "1.0.0.0",
+      "ignoreOnStage": ["prepare", "validate", "quickbuild", "build"]
+    },
+    {
+      "path": "./src-env-specific-alias-pre",
+      "package": "src-env-specific-alias-pre",
+      "versionNumber": "1.0.0.0",
+      "aliasfy": true,
+      "ignoreOnStage": ["prepare", "validate", "quickbuild", "build"]
+    },
+    {
+      "path": "./src-ui",
+      "package": "src-ui",
+      "versionNumber": "1.1.0.0",
+      "ignoreOnStage": ["prepare", "validate", "quickbuild", "build"]
+    },
+    {
+      "path": "./src-access-management",
+      "package": "src-access-management",
+      "versionNumber": "1.0.0.0",
+      "ignoreOnStage": ["prepare", "validate", "quickbuild", "build"]
+    },
+    {
+      "path": "./src-env-specific-alias-post",
+      "package": "src-env-specific-alias-post",
+      "versionNumber": "1.0.0.0",
+      "aliasfy": true,
+      "alwaysDeploy": true,
+      "ignoreOnStage": ["prepare", "validate", "quickbuild", "build"]
+    },
+    {
+      "path": "./src-temp",
+      "default": true
     }
   ],
   "namespace": "",
   "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "58.0",
+  "sourceApiVersion": "59.0",
   "packageAliases": {
     "mkt-connector": "0Ho090000010wqsCAA",
     "mkt-in-development": "0Ho09000001OTHERID",

@@ -1,0 +1,75 @@
+# DX@Scale CI/CD Template for GitHub
+#----------------------------------------------------------------------------------------------------
+# Follows reference pipeline available at docs.dxatscale.io
+# 
+#-----------------------------------------------------------------------------------------------------
+# To know more about dxatscale, visit https://docs.dxatscale.io
+# To know more on sfpowerscripts, visit- https://docs.dxatscale.io/sfpowerscripts/sfpowerscripts
+
+
+
+# This pipeline creates the CI pools used during validate
+
+
+name: 'Replenish CI Pools - Auto Triggered'
+
+on:
+  workflow_dispatch:
+    inputs:
+      gitRef:
+        description: "Commit Id from where the pools should be created"
+        required: false
+        default: 'main'
+  schedule:
+    - cron: '0 14 * * *'
+
+
+#Set the environment variables for tracking metrics
+#env:
+  #SFPOWERSCRIPTS_NEWRELIC: 'true'
+  #SFPOWERSCRIPTS_NEWRELIC_API_KEY: '${{ secrets.NEWRELIC_INSIGHT_INSERT_KEYS }}'
+  #SFPOWERSCRIPTS_DATADOG: 'true'
+  #SFPOWERSCRIPTS_DATADOG_HOST: '${{ secrets.DATADOG_HOST }}'
+  #SFPOWERSCRIPTS_DATADOG_API_KEY: '${{ secrets.DATADOG_API_KEY }}'
+
+
+
+
+jobs:
+
+  pool-ci-pool:
+    name: 'Replenish CI Pool'
+    runs-on: ubuntu-latest
+    container: ghcr.io/dxatscale/sfpowerscripts
+    timeout-minutes: 720 #Set to Maximum Time out
+
+    steps:
+
+      - uses: actions/checkout@v2
+        with: 
+         ref: ${{ github.event.inputs.gitRef }}
+         fetch-depth: 0
+
+   
+      - name: 'Authenticate Dev Hub'
+        run: |
+          echo "${{ secrets.DEVHUB_SFDX_AUTH_URL }}" > ./authfile
+          sf org login sfdx-url  -f authfile -a devhub
+
+      # Authenticate to npm
+      - uses: actions/setup-node@v3
+        with:
+         registry-url: 'https://npm.pkg.github.com'
+
+      - name: 'Prepare a pool of scratch orgs'
+        run: 'sfp orchestrator:prepare -f config/project-ci-pool-def.json -v devhub'
+        env:
+         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
+      # Publish artifacts
+      - uses: actions/upload-artifact@v2
+        if: ${{ always() }}
+        with:
+          name: scratchorg-logs-pool-ci
+          path: .sfpowerscripts/prepare_logs
+

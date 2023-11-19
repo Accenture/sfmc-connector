@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__RecordPage</target>
+
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__RecordPage">
+            <property
+        name="mobilePhoneField"
+        type="String"
+        label="Mobile Phone Field"
+        datasource="apex://MKTPhoneFieldSelector"/>
+            <property
+        name="landlinePhoneField"
+        type="String"
+        label="Landline Phone Field"
+        datasource="apex://MKTPhoneFieldSelector"/>
+            <property
+        name="defaultCountryCode"
+        type="String"
+        label="Default Country Code"
+        description="Optional default country code to be used for validation"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>
