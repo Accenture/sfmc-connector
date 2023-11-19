@@ -1,0 +1,25 @@
+<template>
+  <lightning-card title="Email Unsubscribe">
+    <div class="slds-p-horizontal_small">
+      <lightning-input
+        lwc:ref="email"
+        type="email"
+        label="Email address"
+        onchange={checkIsValid}></lightning-input>
+      <lightning-combobox
+        lwc:ref="reason"
+        name="reason"
+        label="Reason"
+        placeholder="Select Unsubscribe Reason"
+        options={options}></lightning-combobox>
+    </div>
+    <div slot="footer">
+      <lightning-button
+        label="Submit"
+        onclick={handleSubmit}
+        variant="brand"
+        disabled={hasError}
+        title="submit"></lightning-button>
+    </div>
+  </lightning-card>
+</template>

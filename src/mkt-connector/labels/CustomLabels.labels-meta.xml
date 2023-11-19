@@ -40,4 +40,12 @@
         <shortDescription>Input phone number validation error Invalid Number For Type</shortDescription>
         <value>Invalid number for type</value>
     </labels>
+    <labels>
+        <fullName>mktConfirm</fullName>
+        <categories>mkt</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>ConfirmationButton</shortDescription>
+        <value>Confirm</value>
+    </labels>
 </CustomLabels>

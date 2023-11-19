@@ -16,27 +16,33 @@ public with sharing virtual class MktSoap {
 	 * @description Custom Exception related to Soap API calls
 	 */
 	public class SoapException extends Exception {
-		public integer errorcode;
-		public string documentation;
+		public integer errorCode;
+		public string details;
 		/**
 		 * @description Constructor for Custom Exception
 		 * @param errorBody body returned from API where there was an error
 		 */
-		public SoapException(MktSoap.GenericErrorResponse errorBody) {
-			this(errorBody.message);
-			this.errorcode = errorBody.errorcode;
-			this.documentation = errorBody.documentation;
+		public SoapException(String status, Integer statusCode, String details) {
+			this(status);
+			this.errorcode = statusCode;
+			this.details = details;
 		}
 	}
 	/**
 	 * WIP - copied from REST
 	 * @description Default response structure of error from SFMC Soap API
 	 */
-	public class GenericErrorResponse {
-		public string message;
-		public integer errorcode;
-		public string documentation;
+	public class GenericResponse {
+		public string OverallStatus;
+		public List<GenericResponseResult> Results;
 	}
+
+	public class GenericResponseResult {
+		public string StatusMessage;
+		public integer ErrorCode;
+		public string StatusCode;
+	}
+
 	/**
 	 * @description Send to SFMC using Soap API
 	 * @param payload stringified payload
@@ -59,10 +65,9 @@ public with sharing virtual class MktSoap {
 			return send(payload, action);
 		} else if (res.getStatusCode() > 299) {
 			throw new MktSoap.SoapException(
-				(MktSoap.GenericErrorResponse) JSON.deserialize(
-					res.getBody(),
-					MktSoap.GenericErrorResponse.class
-				)
+				res.getStatus(),
+				res.getStatusCode(),
+				res.getBody()
 			);
 		} else {
 			return res;
