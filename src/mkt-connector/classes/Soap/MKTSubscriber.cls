@@ -1,9 +1,21 @@
+/**
+ * @description Class to handle subscriber relates operations
+ */
 public with sharing class MKTSubscriber {
+	/**
+	 * @description Class describing Unsubscribe Event
+	 */
+	@SuppressWarnings('PMD.FieldNamingConventions,PMD.VariableNamingConventions')
 	public class LogUnsubEvent {
 		public String Name = 'LogUnsubEvent';
 		public List<LogUnsubEventParam> Parameters;
 	}
-
+	/**
+	 * @description Class describing parameters inside unsubscribe Event
+	 */
+	@SuppressWarnings(
+		'PMD.FieldNamingConventions,PMD.VariableNamingConventions,PMD.FormalParameterNamingConventions'
+	)
 	public class LogUnsubEventParam {
 		public String Name;
 		public String Value;
@@ -12,23 +24,37 @@ public with sharing class MKTSubscriber {
 			this.Value = Value;
 		}
 	}
+	/**
+	 * @description Class describing result of Unsubscribe Event payload
+	 */
+	@SuppressWarnings('PMD.FieldNamingConventions,PMD.VariableNamingConventions')
+	public class LogUnsubEventResponse {
+		public string OverallStatus;
+		public LogUnsubEventResult Results;
+	}
+	/**
+	 * @description Class describing result of Unsubscribe Event payload
+	 */
+	@SuppressWarnings('PMD.FieldNamingConventions,PMD.VariableNamingConventions')
+	public class LogUnsubEventResult {
+		public string StatusMessage;
+		public integer ErrorCode;
+		public string StatusCode;
+	}
 
 	/**
-	 * @description Retreive data from data extension
-	 * using a single field filter
+	 * @description Unsubscribe from emails
 	 * @param accountId MID in SFMC
-	 * @param name name of data extension
-	 * @param fieldNames list of fields to be returned
-	 * @param filterProperty (optional) field which should be used as filter
-	 * @param filterOperator (optional) type of comparison
-	 * @param filterValue (optional) value to filter upon
+	 * @param contactKey email address to unsubscribe
+	 * @param reason reason for unsubscribe
+	 * @param jobId (optional) jobid from email send
+	 * @param batchId (optional)  batchId from email send
 	 * @return generic JSON object
 	 */
-	@AuraEnabled(cacheable=true)
 	@SuppressWarnings(
 		'PMD.ExcessiveParameterList'
 	) // cannot pass more complex values
-	public static List<MktSoap.GenericResponse> unsubscribeFromEmail(
+	public static LogUnsubEventResponse unsubscribeFromEmail(
 		String accountId,
 		String contactKey,
 		String reason,
@@ -57,7 +83,7 @@ public with sharing class MKTSubscriber {
 			DataWeave.Result result = responseScript.execute(
 				new Map<String, String>{ 'payload' => res.getBody() }
 			);
-			return (List<MktSoap.GenericResponse>)result.getValue();
+			return (LogUnsubEventResponse) result.getValue();
 			// return JSON.deserializeUntyped(result.getValueAsString());
 		} catch (Exception e) {
 			throw new AuraHandledException(e.getMessage());

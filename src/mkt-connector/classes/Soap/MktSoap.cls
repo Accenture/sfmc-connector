@@ -12,7 +12,6 @@ public with sharing virtual class MktSoap {
 		this.accountId = accountId;
 	}
 	/**
-	 * WIP - copied from REST
 	 * @description Custom Exception related to Soap API calls
 	 */
 	public class SoapException extends Exception {
@@ -20,7 +19,9 @@ public with sharing virtual class MktSoap {
 		public string details;
 		/**
 		 * @description Constructor for Custom Exception
-		 * @param errorBody body returned from API where there was an error
+		 * @param status message of the error
+		 * @param statusCode technical code of the error
+		 * @param details of the error
 		 */
 		public SoapException(String status, Integer statusCode, String details) {
 			this(status);
@@ -29,18 +30,12 @@ public with sharing virtual class MktSoap {
 		}
 	}
 	/**
-	 * WIP - copied from REST
-	 * @description Default response structure of error from SFMC Soap API
+	 * @description Default structure of a SOAP response for dynamic typing
 	 */
+	@SuppressWarnings('PMD.FieldNamingConventions,PMD.VariableNamingConventions')
 	public class GenericResponse {
 		public string OverallStatus;
-		public List<GenericResponseResult> Results;
-	}
-
-	public class GenericResponseResult {
-		public string StatusMessage;
-		public integer ErrorCode;
-		public string StatusCode;
+		public List<object> Results;
 	}
 
 	/**

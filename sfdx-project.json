@@ -60,7 +60,6 @@
   "sourceApiVersion": "59.0",
   "packageAliases": {
     "mkt-connector": "0Ho090000010wqsCAA",
-    "mkt-in-development": "0Ho09000001OTHERID",
     "OrgDependent": "0Ho090000010wqxCAA"
   }
 }

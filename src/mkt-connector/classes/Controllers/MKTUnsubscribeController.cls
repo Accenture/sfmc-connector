@@ -1,7 +1,9 @@
+/**
+ * @description Controller for LWC unsubscribe operations
+ */
 public without sharing class MKTUnsubscribeController {
 	/**
-	 * @description Retreive data from data extension
-	 * using a single field filter
+	 * @description Unsubscribe from emails
 	 * @param accountId MID in SFMC
 	 * @param emailAddress email address to unsubscribe
 	 * @param reason reason for unsubscribe
@@ -13,15 +15,20 @@ public without sharing class MKTUnsubscribeController {
 	@SuppressWarnings(
 		'PMD.ExcessiveParameterList'
 	) // cannot pass more complex values
-	public static List<MktSoap.GenericResponse> unsubscribeFromEmailByEmail(
+	public static List<MktSubscriber.LogUnsubEventResponse> unsubscribeFromEmailController(
 		String accountId,
 		String emailAddress,
 		String reason,
 		String jobId,
 		String batchId
 	) {
-		List<Contact> cList = [SELECT Id FROM Contact WHERE email = :emailAddress];
-		List<MktSoap.GenericResponse> resList = new List<Object>();
+		List<Contact> cList = [
+			SELECT Id
+			FROM Contact
+			WHERE email = :emailAddress
+			WITH SECURITY_ENFORCED
+		];
+		List<MktSubscriber.LogUnsubEventResponse> resList = new List<MktSubscriber.LogUnsubEventResponse>();
 		for (Contact c : cList) {
 			resList.add(
 				MKTSubscriber.unsubscribeFromEmail(
