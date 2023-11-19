@@ -2,18 +2,15 @@
 #----------------------------------------------------------------------------------------------------
 # Maintained by @aly76 for DX@Scale
 # Follows reference pipeline available at docs.dxatscale.io
-# 
+#
 #-----------------------------------------------------------------------------------------------------
 # To know more about dxatscale, visit https://docs.dxatscale.io
 # To know more on sfpowerscripts, visit- https://docs.dxatscale.io/sfpowerscripts/sfpowerscripts
 
-
-
 # This pipeline is used to release a set of packages into respective environments
 # Changelog will be written to changelog branch
 
-name: 'CD Pipeline - User Triggered'
-
+name: "CD Pipeline - User Triggered"
 
 on:
   workflow_dispatch:
@@ -23,9 +20,9 @@ on:
         required: true
 
 #Set the environment variables for tracking metrics
-#env:
-  #SFPOWERSCRIPTS_NEWRELIC: 'true'
-  #SFPOWERSCRIPTS_NEWRELIC_API_KEY: '${{ secrets.NEWRELIC_INSIGHT_INSERT_KEYS }}'
+env:
+  SFPOWERSCRIPTS_NEWRELIC: "true"
+  SFPOWERSCRIPTS_NEWRELIC_API_KEY: "${{ secrets.NEWRELIC_INSIGHT_INSERT_KEYS }}"
   #SFPOWERSCRIPTS_DATADOG: 'true'
   #SFPOWERSCRIPTS_DATADOG_HOST: '${{ secrets.DATADOG_HOST }}'
   #SFPOWERSCRIPTS_DATADOG_API_KEY: '${{ secrets.DATADOG_API_KEY }}'
@@ -40,7 +37,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-   
+
       - name: Authenticate to ST sandbox
         run: |
           echo "${{ secrets.ST_SFDX_AUTH_URL }}" > ./authfile
@@ -49,13 +46,13 @@ jobs:
       # Authenticate to npm
       - uses: actions/setup-node@v3
         with:
-         registry-url: 'https://npm.pkg.github.com'
+          registry-url: "https://npm.pkg.github.com"
 
       # Release to environment
-      - name: 'Release to ST'
+      - name: "Release to ST"
         run: 'sfp orchestrator:release -u st -p ${{ github.event.inputs.pathToReleaseDef }} --npm --scope ${{ github.repository_owner }} --generatechangelog --branchname changelog -g "::group::,::endgroup::"'
         env:
-         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   SIT:
     runs-on: ubuntu-latest
@@ -63,14 +60,13 @@ jobs:
     if: github.ref == 'refs/heads/main' || contains(github.ref,'refs/heads/release')
     environment:
       name: SIT
-    needs: ST  
+    needs: ST
 
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
 
-   
       - name: Authenticate to SIT sandbox
         run: |
           echo "${{ secrets.SIT_SFDX_AUTH_URL }}" > ./authfile
@@ -79,14 +75,13 @@ jobs:
       # Authenticate to npm
       - uses: actions/setup-node@v3
         with:
-         registry-url: 'https://npm.pkg.github.com'
-
+          registry-url: "https://npm.pkg.github.com"
 
       # Release to environment
-      - name: 'Release to SIT'
+      - name: "Release to SIT"
         run: 'sfp orchestrator:release -u sit -p ${{ github.event.inputs.pathToReleaseDef }} --npm --scope ${{ github.repository_owner }} --generatechangelog --branchname changelog -g "::group::,::endgroup::" '
         env:
-         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   UAT:
     runs-on: ubuntu-latest
@@ -100,7 +95,6 @@ jobs:
         with:
           fetch-depth: 0
 
-
       - name: Authenticate to UAT
         run: |
           echo "${{ secrets.UAT_SFDX_AUTH_URL }}" > ./authfile
@@ -109,15 +103,13 @@ jobs:
       # Authenticate to npm
       - uses: actions/setup-node@v3
         with:
-         registry-url: 'https://npm.pkg.github.com'
-
+          registry-url: "https://npm.pkg.github.com"
 
       # Release to environment
-      - name: 'Release to UAT'
+      - name: "Release to UAT"
         run: 'sfp orchestrator:release -u uat -p ${{ github.event.inputs.pathToReleaseDef }} --npm --scope ${{ github.repository_owner }} --generatechangelog --branchname changelog -g "::group::,::endgroup::"'
         env:
-         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   PROD:
     runs-on: ubuntu-latest
@@ -125,28 +117,25 @@ jobs:
     if: contains(github.ref,'refs/heads/release')
     environment:
       name: PROD
-    needs: UAT  
+    needs: UAT
 
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
 
-
       - name: Authenticate to PROD
         run: |
           echo "${{ secrets.DEVHUB_SFDX_AUTH_URL }}" > ./authfile
           sf org login sfdx-url  -f ./authfile -a prod
- 
 
       # Authenticate to npm
       - uses: actions/setup-node@v3
         with:
-         registry-url: 'https://npm.pkg.github.com'
-
+          registry-url: "https://npm.pkg.github.com"
 
       # Release to environment
-      - name: 'Release to PROD'
+      - name: "Release to PROD"
         run: 'sfp orchestrator:release -u prod -p ${{ github.event.inputs.pathToReleaseDef }} --npm --scope ${{ github.repository_owner }} --generatechangelog --branchname changelog -g "::group::,::endgroup::"'
         env:
-         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
