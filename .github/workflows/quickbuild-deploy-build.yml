@@ -32,7 +32,7 @@ jobs:
     container: ghcr.io/dxatscale/sfpowerscripts
     if: github.ref == 'refs/heads/main'
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -47,7 +47,7 @@ jobs:
           sfp orchestrator:quickbuild -v devhub --diffcheck --buildnumber ${GITHUB_RUN_ID} --branch ${GITHUB_REF#refs/heads/}
 
       # Publish artifacts
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: quickbuild-artifacts
           path: artifacts
@@ -62,7 +62,7 @@ jobs:
       name: DEV
     concurrency: dev
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -94,7 +94,7 @@ jobs:
     concurrency: build
     if: github.ref == 'refs/heads/main'
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -109,13 +109,13 @@ jobs:
           sfp orchestrator:build -v devhub --diffcheck --branch ${GITHUB_REF#refs/heads/} --buildnumber ${GITHUB_RUN_ID}
 
       # Publish artifacts
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: build-artifacts
           path: artifacts
 
       # Authenticate to npm
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           registry-url: "https://npm.pkg.github.com"
 

@@ -34,7 +34,7 @@ jobs:
     concurrency: build
     if: contains(github.ref,'release') || github.ref == 'refs/heads/release/**'
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -49,13 +49,13 @@ jobs:
           sfp orchestrator:build -v devhub --diffcheck --branch ${GITHUB_REF#refs/heads/} --buildnumber ${GITHUB_RUN_ID}
 
       # Publish artifacts
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           node-version: "16.x"
           name: build-artifacts
           path: artifacts
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           registry-url: "https://npm.pkg.github.com"
           scope: "@${{ github.repository_owner }}"

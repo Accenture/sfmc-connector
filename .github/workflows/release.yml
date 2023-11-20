@@ -34,7 +34,7 @@ jobs:
     environment:
       name: ST
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -44,7 +44,7 @@ jobs:
           sf org login sfdx-url  -f ./authfile -a st
 
       # Authenticate to npm
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           registry-url: "https://npm.pkg.github.com"
 
@@ -63,7 +63,7 @@ jobs:
     needs: ST
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -73,7 +73,7 @@ jobs:
           sf org login sfdx-url  -f ./authfile -a sit
 
       # Authenticate to npm
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           registry-url: "https://npm.pkg.github.com"
 
@@ -91,7 +91,7 @@ jobs:
       name: UAT
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -101,7 +101,7 @@ jobs:
           sf org login sfdx-url  -f ./authfile -a uat
 
       # Authenticate to npm
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           registry-url: "https://npm.pkg.github.com"
 
@@ -120,7 +120,7 @@ jobs:
     needs: UAT
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -130,7 +130,7 @@ jobs:
           sf org login sfdx-url  -f ./authfile -a prod
 
       # Authenticate to npm
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           registry-url: "https://npm.pkg.github.com"
 

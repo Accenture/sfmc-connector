@@ -36,7 +36,7 @@ jobs:
     timeout-minutes: 720 #Set to Maximum Time out
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.inputs.gitRef }}
           fetch-depth: 0
@@ -47,7 +47,7 @@ jobs:
           sf org login sfdx-url  -f authfile -a devhub
 
       # Authenticate to npm
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           registry-url: "https://npm.pkg.github.com"
 
@@ -57,7 +57,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Publish artifacts
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         if: ${{ always() }}
         with:
           name: scratchorg-logs-pool-ci

@@ -30,7 +30,7 @@ jobs:
     container: ghcr.io/dxatscale/sfpowerscripts
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: "Authenticate Dev Hub"
         run: |
@@ -46,7 +46,7 @@ jobs:
     container: ghcr.io/dxatscale/sfpowerscripts
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: "Authenticate Dev Hub"
         run: |
