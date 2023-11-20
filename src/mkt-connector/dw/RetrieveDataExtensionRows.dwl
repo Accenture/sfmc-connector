@@ -6,6 +6,6 @@ fun arrayToObject(data): Object =
     })
 
 input payload application/xml
-output application/apex  
+output application/json  
 ---
-payload.Envelope.Body.RetrieveResponseMsg.*Results.*Properties map ((val) -> val.*Property) map ((val) -> arrayToObject(val)) as Object {class:"MktSoap.GenericResponse"}
+payload.Envelope.Body.RetrieveResponseMsg.*Results.*Properties map ((val) -> val.*Property) map ((val) -> arrayToObject(val))
