@@ -53,19 +53,11 @@ jobs:
           category: "/language:javascript"
 
       - name: "Run Scanners"
-        shell: pwsh
         run: |
-          echo pwshtest
-          # sf plugins install @salesforce/sfdx-scanner
-          # mkdir codescan
-          # sf scanner run -t "src/**/*.cls,src/**/*.trigger" --engine "pmd" -o "codescan/apex-scan.json" -s 3;
-          # sf scanner run -t "src/**/*.js,!src/**/staticresources/**/*.js" --engine "eslint" --eslintconfig ".eslintrc.json" -o "codescan/eslint-scan.json"  -s 3;
-          # ls codescan
-          # $apexErrors = Get-Content 'codescan/apex-scan.json' | ConvertFrom-Json
-          # $eslintErrors = Get-Content 'codescan/eslint-scan.json' | ConvertFrom-Json
-          # if ($apexErrors.count ||$eslintErrors.count ){
-          #   Throw "Apex or LWC errors in codescan please check locally and rerun"
-          # }
+          sf plugins install @salesforce/sfdx-scanner
+          mkdir codescan
+          sf scanner run -t "src/**/*.cls,src/**/*.trigger" --engine "pmd"-s 3;
+          sf scanner run -t "src/**/*.js,!src/**/staticresources/**/*.js" --engine "eslint" --eslintconfig ".eslintrc.json" -s 3;
 
       - name: "Authenticate Dev Hub"
         run: |
