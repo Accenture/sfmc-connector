@@ -1,7 +1,7 @@
 /**
  * @description Class to handle subscriber relates operations
  */
-public with sharing class MKTSubscriber {
+public with sharing class MktSubscriber {
 	/**
 	 * @description Class describing Unsubscribe Event
 	 */
@@ -30,7 +30,7 @@ public with sharing class MKTSubscriber {
 	@SuppressWarnings('PMD.FieldNamingConventions,PMD.VariableNamingConventions')
 	public class LogUnsubEventResponse {
 		public string OverallStatus;
-		public LogUnsubEventResult Results;
+		public List<LogUnsubEventResult> Results;
 	}
 	/**
 	 * @description Class describing result of Unsubscribe Event payload

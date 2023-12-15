@@ -1,4 +1,4 @@
-@isTest
+@isTest(isParallel=true)
 public with sharing class MktDataExtensionTest {
 	@isTest
 	static void retrieveDataExtensionRows() {

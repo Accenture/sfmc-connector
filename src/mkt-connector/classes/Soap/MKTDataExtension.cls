@@ -2,7 +2,7 @@
  * @description Data Extension specific methods
  */
 
-public with sharing class MKTDataExtension {
+public with sharing class MktDataExtension {
 	/**
 	 * @description SOAP simple filter
 	 */
