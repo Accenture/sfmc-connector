@@ -56,7 +56,7 @@ jobs:
         run: |
           sf plugins install @salesforce/sfdx-scanner
           mkdir codescan
-          sf scanner run -t "src/**/*.cls,src/**/*.trigger" --engine "pmd"-s 3;
+          sf scanner run -t "src/**/*.cls,src/**/*.trigger" --engine "pmd -s 3;
           sf scanner run -t "src/**/*.js,!src/**/staticresources/**/*.js" --engine "eslint" --eslintconfig ".eslintrc.json" -s 3;
 
       - name: "Authenticate Dev Hub"
