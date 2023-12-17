@@ -55,7 +55,7 @@ jobs:
       - name: "Run Scanners"
         run: |
           sf plugins install @salesforce/sfdx-scanner
-          npm i
+          npm i --force
           mkdir codescan
           sf scanner run -t "src/**/*.cls,src/**/*.trigger" --engine "pmd" -s 3;
           sf scanner run -t "src/**/*.js,!src/**/staticresources/**/*.js" --engine "eslint" --eslintconfig ".eslintrc.json" -s 3;
