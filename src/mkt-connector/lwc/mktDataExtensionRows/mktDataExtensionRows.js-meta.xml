@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__RecordPage</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__RecordPage">
+            <property name="name" type="String" label="Name of Data Extension"/>
+        <property
+        name="fieldNames"
+        type="String"
+        label="Comma Separated Field Name"
+        required="true"/>
+        <property
+        name="recordIdFieldName"
+        type="String"
+        label="Name of Record ID field"
+        required="true"/>
+        <property
+        name="componentTitle"
+        type="String"
+        label="Title for the Component"
+        required="true"/>
+        <property
+        name="accountId"
+        type="String"
+        label="MID of Business Unit"
+        required="true"/>
+    </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

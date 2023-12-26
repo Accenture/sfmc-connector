@@ -10,15 +10,15 @@ private class MktTransactionalMessagingTest {
 		e.recipient.to = 'someone@example.com';
 		e.recipient.attributes = new Map<String, String>{ 'Name' => 'TestName' };
 		// Set mock callout class
-		MktRestTestUtils.GenericRestMock m = new MktRestTestUtils.GenericRestMock();
-		m.addResponse(
+		MktTestUtils.GenericMock m = new MktTestUtils.GenericMock();
+		m.addRestResponse(
 			'test.rest.marketingcloudapis.com/messaging/v1/email/messages/' +
 			messageKey,
 			'POST',
 			202,
 			'{"requestId":"uniquegeneratedid","errorcode":0,"responses":[{"messageKey":"uniqueid"}]}'
 		);
-		m.addResponse(
+		m.addRestResponse(
 			'test.rest.marketingcloudapis.com/messaging/v1/email/messages/' +
 			messageKey,
 			'GET',
@@ -58,8 +58,8 @@ private class MktTransactionalMessagingTest {
 		e.recipient.to = 'someone@example.com';
 		e.recipient.attributes = new Map<String, String>{ 'Name' => 'TestName' };
 		// Set mock callout class
-		MktRestTestUtils.GenericRestMock m = new MktRestTestUtils.GenericRestMock();
-		m.addResponse(
+		MktTestUtils.GenericMock m = new MktTestUtils.GenericMock();
+		m.addRestResponse(
 			'test.rest.marketingcloudapis.com/messaging/v1/email/messages/' +
 			messageKey,
 			'POST',
@@ -95,15 +95,15 @@ private class MktTransactionalMessagingTest {
 		e.content = new MktTransactionalMessaging.SmsContent();
 		e.content.message = 'TestClassMessage';
 		// Set mock callout class
-		MktRestTestUtils.GenericRestMock m = new MktRestTestUtils.GenericRestMock();
-		m.addResponse(
+		MktTestUtils.GenericMock m = new MktTestUtils.GenericMock();
+		m.addRestResponse(
 			'test.rest.marketingcloudapis.com/messaging/v1/sms/messages/' +
 			messageKey,
 			'POST',
 			202,
 			'{"requestId":"uniquegeneratedid","errorcode":0,"responses":[{"messageKey":"uniqueid"}]}'
 		);
-		m.addResponse(
+		m.addRestResponse(
 			'test.rest.marketingcloudapis.com/messaging/v1/sms/messages/' +
 			messageKey,
 			'GET',
